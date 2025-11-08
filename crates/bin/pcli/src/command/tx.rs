@@ -68,8 +68,9 @@ use penumbra_sdk_proto::{
         TxBody as CosmosTxBody,
     },
     noble::forwarding::v1::{ForwardingPubKey, MsgRegisterAccount},
+    util::tendermint_proxy::v1::GetTxRequest,
     view::v1::GasPricesRequest,
-    Message, Name as _,
+    DomainType, Message, Name as _,
 };
 use penumbra_sdk_shielded_pool::Ics20Withdrawal;
 use penumbra_sdk_stake::{
@@ -216,6 +217,14 @@ pub enum TxCmd {
         /// The selected fee tier to multiply the fee amount by.
         #[clap(short, long, default_value_t)]
         fee_tier: FeeTier,
+    },
+    /// Broadcast the SwapClaim action in the scenario that it does not occur automatically.
+    #[clap(display_order = 300)]
+    SwapClaim {
+        /// Only spend funds originally received by the given account.
+        #[clap(long, default_value = "0", display_order = 300)]
+        source: u32,
+        tx_hash: String,
     },
     /// Vote on a governance proposal in your role as a delegator (see also: `pcli validator vote`).
     #[clap(display_order = 400)]
@@ -374,6 +383,7 @@ impl TxCmd {
             TxCmd::Send { .. } => false,
             TxCmd::Sweep { .. } => false,
             TxCmd::Swap { .. } => false,
+            TxCmd::SwapClaim { .. } => false,
             TxCmd::Delegate { .. } => false,
             TxCmd::DelegateMany { .. } => false,
             TxCmd::Undelegate { .. } => false,
@@ -591,6 +601,66 @@ impl TxCmd {
                 // BUG: this doesn't wait for confirmation, see
                 // https://github.com/penumbra-zone/penumbra/pull/2091/commits/128b24a6303c2f855a708e35f9342987f1dd34ec
                 app.build_and_submit_transaction(plan).await?;
+            }
+            TxCmd::SwapClaim { tx_hash, source } => {
+                // query and gather all swap events
+                let mut client = app.tendermint_proxy_client().await?;
+                let params = app
+                    .view
+                    .as_mut()
+                    .context("view service must be initialized")?
+                    .app_params()
+                    .await?;
+
+                let tx = Transaction::decode(
+                    client
+                        .get_tx(GetTxRequest {
+                            hash: hex::decode(tx_hash.clone())?,
+                            prove: false,
+                        })
+                        .await?
+                        .into_inner()
+                        .tx
+                        .as_slice(),
+                )?;
+
+                let fvk = app.config.full_viewing_key.clone();
+
+                for swap in tx.swaps() {
+                    // Fetch the SwapRecord with the claimable swap.
+                    let swap_record = app
+                        .view()
+                        .swap_by_commitment(swap.body.payload.commitment)
+                        .await?;
+
+                    let mut planner = Planner::new(OsRng);
+                    planner
+                        .set_gas_prices(gas_prices)
+                        .set_fee_tier(FeeTier::Low.into());
+
+                    let plan = planner
+                        .swap_claim(SwapClaimPlan {
+                            swap_plaintext: swap
+                                .body
+                                .payload
+                                .encrypted_swap
+                                .decrypt_with_payload_key(
+                                    &tx.payload_keys(&fvk)?
+                                        .get(&swap.body.payload.commitment)
+                                        .expect("swap commitment key must be available"),
+                                )?,
+                            position: swap_record.position,
+                            output_data: swap_record.output_data,
+                            epoch_duration: params.sct_params.epoch_duration,
+                            proof_blinding_r: Fq::rand(&mut OsRng),
+                            proof_blinding_s: Fq::rand(&mut OsRng),
+                        })
+                        .plan(app.view(), AddressIndex::new(*source))
+                        .await
+                        .context("can't plan swap claim")?;
+
+                    app.build_and_submit_transaction(plan).await?;
+                }
             }
             TxCmd::Delegate {
                 to,
