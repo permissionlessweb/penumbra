@@ -34,7 +34,6 @@ use std::io::IsTerminal as _;
 use std::io::Read;
 use std::net::SocketAddr;
 use storage::Storage;
-use tonic::service::Routes;
 use tracing::Instrument;
 use tracing_subscriber::{prelude::*, EnvFilter};
 use url::Url;
@@ -208,12 +207,9 @@ impl Opt {
                 let service =
                     CoordinatorService::new(knower, storage.clone(), queue.clone(), marker);
 
-                let routes = Routes::new(
-                    CeremonyCoordinatorServiceServer::new(service)
-                        .max_encoding_message_size(max_message_size(marker))
-                        .max_decoding_message_size(max_message_size(marker)),
-                )
-                .prepare();
+                let grpc_service = CeremonyCoordinatorServiceServer::new(service)
+                    .max_encoding_message_size(max_message_size(marker))
+                    .max_decoding_message_size(max_message_size(marker));
 
                 let web_app = web_app(
                     fvk.payment_address(0u32.into()).0,
@@ -223,7 +219,10 @@ impl Opt {
                     storage,
                 );
 
-                let router = routes.into_axum_router().merge(web_app);
+                let router = tonic::service::Routes::new(grpc_service)
+                    .prepare()
+                    .into_axum_router()
+                    .merge(web_app);
 
                 tracing::info!(?bind_addr, "starting grpc and web server");
                 let listener = tokio::net::TcpListener::bind(&bind_addr)

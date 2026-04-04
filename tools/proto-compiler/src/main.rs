@@ -39,7 +39,7 @@ fn main() -> anyhow::Result<()> {
 
     let rpc_doc_attr = r#"#[cfg(feature = "rpc")]"#;
 
-    tonic_build::configure()
+    tonic_prost_build::configure()
         .out_dir(&target_dir)
         .emit_rerun_if_changed(false)
         // Only in Tonic 0.10
@@ -47,7 +47,7 @@ fn main() -> anyhow::Result<()> {
         // We need to feature-gate the RPCs.
         .server_mod_attribute(".", rpc_doc_attr)
         .client_mod_attribute(".", rpc_doc_attr)
-        .compile_protos_with_config(
+        .compile_with_config(
             config,
             &[
                 "../../proto/penumbra/penumbra/core/app/v1/app.proto",
@@ -97,7 +97,7 @@ fn main() -> anyhow::Result<()> {
                 "../../proto/rust-vendored/noble/forwarding/v1/query.proto",
                 "../../proto/rust-vendored/noble/forwarding/v1/tx.proto",
             ],
-            &["../../proto/penumbra/", "../../proto/rust-vendored/"],
+            &["../../proto/penumbra/", "../../proto/rust-vendored/"]
         )?;
 
     // Finally, build pbjson Serialize, Deserialize impls:

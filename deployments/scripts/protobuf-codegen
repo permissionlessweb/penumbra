@@ -26,6 +26,12 @@ buf export buf.build/cosmos/ibc:7ab44ae956a0488ea04e04511efa5f70 --output rust-v
 
 buf export penumbra --output rust-vendored/
 
+# Ensure well-known types are available (required by gogoproto/timestamp and prost 0.14+)
+mkdir -p rust-vendored/google/protobuf
+curl -sSL https://raw.githubusercontent.com/protocolbuffers/protobuf/main/src/google/protobuf/descriptor.proto -o rust-vendored/google/protobuf/descriptor.proto
+curl -sSL https://raw.githubusercontent.com/protocolbuffers/protobuf/main/src/google/protobuf/timestamp.proto -o rust-vendored/google/protobuf/timestamp.proto
+curl -sSL https://raw.githubusercontent.com/protocolbuffers/protobuf/main/src/google/protobuf/duration.proto -o rust-vendored/google/protobuf/duration.proto
+
 # Remove the re-exported Penumbra proto defs, since we version control
 # those directly in this repo, and don't need to duplicate them as output.
 rm -rf rust-vendored/penumbra/

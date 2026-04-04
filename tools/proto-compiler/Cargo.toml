@@ -13,13 +13,13 @@ version = "0.1.0"
 
 [dependencies]
 anyhow = "1"
-ibc-proto = { version = "0.51.1" }
-ics23 = "0.12.0"
-pbjson = "0.7.0"
-pbjson-build = "0.7.0"
-pbjson-types = "0.7.0"
-prost = "0.13.3"
-prost-build = "0.13.3"
-prost-types = "0.13.3"
+ibc-proto                        = { path = "../../../ibc-proto-rs" }
+ics23                            = { path = "../../../ics23/rust" }
+pbjson-build                     = "0.7.0"
+pbjson-types                     = { git = "https://github.com/permissionlessweb/pbjson", package = "informalsystems-pbjson-types", branch = "main" }
+prost = "0.14"
+prost-build = "0.14"
+prost-types = "0.14"
 tempfile = "3"
-tonic-build = { version = "0.12.3", features = ["cleanup-markdown"] }
+tonic-prost-build = "0.14"
+tonic-build = { version = "0.14.5" }
