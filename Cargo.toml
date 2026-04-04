@@ -122,7 +122,7 @@ camino                           = { version = "1" }
 chacha20poly1305                 = { version = "0.9.0" }
 chrono                           = { default-features = false, version = "0.4" }
 clap                             = { version = "3.2" }
-cnidarium                        = { version = "0.83", default-features = false}
+cnidarium                        = { git = "https://github.com/permissionlessweb/cnidarium", branch = "main", default-features = false}
 cnidarium-component              = { default-features = false, version = "2.1.1", path = "crates/cnidarium-component" }
 cometindex                       = { version = "2.1.1", path = "crates/util/cometindex" }
 criterion                        = { version = "0.4" }
@@ -140,13 +140,13 @@ http                             = { version = "1.2.0" }
 http-body                        = { version = "1.0.1" }
 http-body-util                   = { version = "0.1.2" }
 humantime                        = { version = "2.1" }
-ibc-proto                        = { default-features = false, version = "0.51.1" }
-ibc-types                        = { default-features = false, version = "0.15.1" }
+ibc-proto = { git = "https://github.com/permissionlessweb/ibc-proto-rs", branch = "main" }
+ibc-types                        = { default-features = false, git = "https://github.com/permissionlessweb/ibc-types", branch = "main" }
 ibig                             = { version = "0.3" }
-ics23                            = { version = "0.12.0" }
+ics23 = { git = "https://github.com/permissionlessweb/ics23", branch = "stable" }
 im                               = { version = "^15.1.0" }
 indicatif                        = { version = "0.16" }
-jmt                              = { version = "0.11", features = ["migration"] }
+jmt                              = { git = "https://github.com/penumbra-zone/jmt", branch = "main", features = ["migration"] }
 ledger-lib = { git = "https://github.com/ledger-community/rust-ledger", rev = "510bb3ca30639af4bdb12a918b6bbbdb75fa5f52" }
 ledger-proto = { git = "https://github.com/ledger-community/rust-ledger", rev = "510bb3ca30639af4bdb12a918b6bbbdb75fa5f52" }
 metrics                          = { version = "0.24.1" }
@@ -156,8 +156,8 @@ num-bigint                       = { version = "0.4" }
 num-traits                       = { default-features = false, version = "0.2.15" }
 once_cell                        = { version = "1.8" }
 parking_lot                      = { version = "0.12.1" }
-pbjson                           = { version = "0.7.0" }
-pbjson-types                     = { version = "0.7.0" }
+pbjson = { package = "informalsystems-pbjson", git = "https://github.com/permissionlessweb/pbjson", branch = "main" }
+pbjson-types                     = { git = "https://github.com/permissionlessweb/pbjson", package = "informalsystems-pbjson-types", branch = "main" }
 penumbra-sdk-app                     = { default-features = false, version = "2.1.1", path = "crates/core/app" }
 penumbra-sdk-asset                   = { default-features = false, version = "2.1.1", path = "crates/core/asset" }
 penumbra-sdk-community-pool          = { default-features = false, version = "2.1.1", path = "crates/core/component/community-pool" }
@@ -215,11 +215,11 @@ sha2                             = { version = "0.10" }
 sqlx                             = { version = "0.8", features = ["bigdecimal", "postgres", "runtime-tokio", "tls-rustls"] }
 tap                              = "1.0.1"
 tempfile                         = { version = "3.3.0" }
-tendermint                       = { default-features = false, version = "0.40.3" }
-tendermint-config                = { version = "0.40.3" }
-tendermint-light-client-verifier = { version = "0.40.3" }
-tendermint-proto                 = { version = "0.40.3" }
-tendermint-rpc                   = { version = "0.40.3" }
+tendermint = { git = "https://github.com/permissionlessweb/tendermint-rs", branch = "main" }
+tendermint-config = { git = "https://github.com/permissionlessweb/tendermint-rs", branch = "main" }
+tendermint-light-client-verifier = { git = "https://github.com/permissionlessweb/tendermint-rs", branch = "main"}
+tendermint-proto = { git = "https://github.com/permissionlessweb/tendermint-rs", branch = "main" }
+tendermint-rpc = { git = "https://github.com/permissionlessweb/tendermint-rs", branch = "main" }
 termion                          = { version = "3" }
 thiserror                        = { version = "1.0" }
 time                             = { version = "0.3" }
@@ -227,10 +227,12 @@ tokio                            = { version = "1.39.0" }
 tokio-stream                     = { version = "0.1.8" }
 tokio-util                       = { version = "0.7" }
 toml                             = { version = "0.7" }
-tonic                            = { version = "0.12.3" }
-tonic-reflection                 = { version = "0.12.3" }
-tonic-web                        = { version = "0.12.3" }
+tonic                            = { version = "0.14.5" }
+tonic-reflection                 = { version = "0.14" }
+tonic-web                        = { version = "0.14" }
+tonic-prost                      = { version = "0.14" }
 tower                            = { version = "0.4.0" }
+tower-abci                       = { git = "https://github.com/permissionlessweb/tower-abci", branch = "main"}
 tower-http                       = { version = "0.6.2" }
 tower-service                    = { version = "0.3.2" }
 tracing                          = { version = "0.1" }
