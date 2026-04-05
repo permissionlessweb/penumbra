@@ -146,7 +146,7 @@ ibig                             = { version = "0.3" }
 ics23 = { git = "https://github.com/permissionlessweb/ics23", branch = "stable" }
 im                               = { version = "^15.1.0" }
 indicatif                        = { version = "0.16" }
-jmt                              = { git = "https://github.com/penumbra-zone/jmt", branch = "main", features = ["migration"] }
+jmt                              = { git = "https://github.com/permissionlessweb/jmt", branch = "main", features = ["migration"] }
 ledger-lib = { git = "https://github.com/ledger-community/rust-ledger", rev = "510bb3ca30639af4bdb12a918b6bbbdb75fa5f52" }
 ledger-proto = { git = "https://github.com/ledger-community/rust-ledger", rev = "510bb3ca30639af4bdb12a918b6bbbdb75fa5f52" }
 metrics                          = { version = "0.24.1" }

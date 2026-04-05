@@ -85,7 +85,7 @@ penumbra-sdk-num = {workspace = true, default-features = true}
 rand = {workspace = true}
 rand_core = {workspace = true, features = ["getrandom"]}
 serde = {workspace = true, features = ["derive"]}
-sha2 = {workspace = true}
+sha2 = {workspace = true, optional = true}
 tracing = {workspace = true}
 
 [dev-dependencies]
