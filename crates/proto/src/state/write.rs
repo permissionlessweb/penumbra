@@ -10,6 +10,7 @@ pub trait StateWriteProto: StateWrite + Send + Sync {
     where
         D: DomainType,
         anyhow::Error: From<<D as TryFrom<D::Proto>>::Error>,
+        <D as crate::protobuf::DomainType>::Proto: Debug,
     {
         self.put_proto(key, D::Proto::from(value));
     }

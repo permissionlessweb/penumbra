@@ -53,7 +53,7 @@ impl ::prost::Name for TransactionBody {
     }
 }
 /// The parameters determining if a transaction should be accepted by the chain.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct TransactionParameters {
     /// The maximum height that this transaction can be included in the chain.
     ///
@@ -184,6 +184,7 @@ pub mod action {
         PositionClose(super::super::super::component::dex::v1::PositionClose),
         #[prost(message, tag = "32")]
         PositionWithdraw(super::super::super::component::dex::v1::PositionWithdraw),
+        #[deprecated]
         #[prost(message, tag = "34")]
         PositionRewardClaim(
             super::super::super::component::dex::v1::PositionRewardClaim,
@@ -293,7 +294,7 @@ pub struct TransactionPerspective {
 }
 /// Nested message and enum types in `TransactionPerspective`.
 pub mod transaction_perspective {
-    #[derive(Clone, PartialEq, ::prost::Message)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct ExtendedMetadataById {
         #[prost(message, optional, tag = "1")]
         pub asset_id: ::core::option::Option<super::super::super::asset::v1::AssetId>,
@@ -317,7 +318,7 @@ pub mod transaction_perspective {
     /// Note: this is *not* the transaction ID that revealed the nullifier.
     ///
     /// Allows walking backwards from a spend to the transaction that created the note.
-    #[derive(Clone, PartialEq, ::prost::Message)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct CreationTransactionIdByNullifier {
         #[prost(message, optional, tag = "1")]
         pub nullifier: ::core::option::Option<
@@ -343,7 +344,7 @@ pub mod transaction_perspective {
     /// Associates a commitment with the transaction ID that eventually nullified it.
     ///
     /// Allows walking forwards from an output to the transaction that spent the note.
-    #[derive(Clone, PartialEq, ::prost::Message)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct NullificationTransactionIdByCommitment {
         #[prost(message, optional, tag = "1")]
         pub commitment: ::core::option::Option<
@@ -377,7 +378,7 @@ impl ::prost::Name for TransactionPerspective {
         "/penumbra.core.transaction.v1.TransactionPerspective".into()
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct PayloadKeyWithCommitment {
     #[prost(message, optional, tag = "1")]
     pub payload_key: ::core::option::Option<super::super::keys::v1::PayloadKey>,
@@ -396,7 +397,7 @@ impl ::prost::Name for PayloadKeyWithCommitment {
         "/penumbra.core.transaction.v1.PayloadKeyWithCommitment".into()
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct NullifierWithNote {
     #[prost(message, optional, tag = "1")]
     pub nullifier: ::core::option::Option<super::super::component::sct::v1::Nullifier>,
@@ -513,12 +514,14 @@ pub mod action_view {
             super::super::super::component::governance::v1::ProposalDepositClaim,
         ),
         /// Deprecated: UIP-9 requires us to have an actual view here.
+        #[deprecated]
         #[prost(message, tag = "30")]
         PositionOpen(super::super::super::component::dex::v1::PositionOpen),
         #[prost(message, tag = "31")]
         PositionClose(super::super::super::component::dex::v1::PositionClose),
         #[prost(message, tag = "32")]
         PositionWithdraw(super::super::super::component::dex::v1::PositionWithdraw),
+        #[deprecated]
         #[prost(message, tag = "34")]
         PositionRewardClaim(
             super::super::super::component::dex::v1::PositionRewardClaim,
@@ -727,6 +730,7 @@ pub mod action_plan {
         ),
         #[prost(message, tag = "200")]
         Ics20Withdrawal(super::super::super::component::ibc::v1::Ics20Withdrawal),
+        #[deprecated]
         #[prost(message, tag = "30")]
         PositionOpen(super::super::super::component::dex::v1::PositionOpen),
         #[prost(message, tag = "35")]
@@ -736,6 +740,7 @@ pub mod action_plan {
         /// The position withdraw/reward claim actions require balance information so they have Plan types.
         #[prost(message, tag = "32")]
         PositionWithdraw(super::super::super::component::dex::v1::PositionWithdrawPlan),
+        #[deprecated]
         #[prost(message, tag = "34")]
         PositionRewardClaim(
             super::super::super::component::dex::v1::PositionRewardClaimPlan,
@@ -794,7 +799,7 @@ impl ::prost::Name for ActionPlan {
     }
 }
 /// Describes a plan for forming a `Clue`.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CluePlan {
     /// The address.
     #[prost(message, optional, tag = "1")]
@@ -817,7 +822,7 @@ impl ::prost::Name for CluePlan {
     }
 }
 /// Describes a plan for forming the transaction memo.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct MemoPlan {
     /// The plaintext.
     #[prost(message, optional, tag = "1")]
@@ -837,7 +842,7 @@ impl ::prost::Name for MemoPlan {
     }
 }
 /// The encrypted memo data describing information about the purpose of a transaction.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct MemoCiphertext {
     /// The encrypted data. 528 bytes.
     #[prost(bytes = "vec", tag = "1")]
@@ -854,7 +859,7 @@ impl ::prost::Name for MemoCiphertext {
     }
 }
 /// The plaintext describing information about the purpose of a transaction.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct MemoPlaintext {
     /// The sender's return address.
     ///
@@ -876,7 +881,7 @@ impl ::prost::Name for MemoPlaintext {
         "/penumbra.core.transaction.v1.MemoPlaintext".into()
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct MemoPlaintextView {
     #[prost(message, optional, tag = "1")]
     pub return_address: ::core::option::Option<super::super::keys::v1::AddressView>,
@@ -893,14 +898,14 @@ impl ::prost::Name for MemoPlaintextView {
         "/penumbra.core.transaction.v1.MemoPlaintextView".into()
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct MemoView {
     #[prost(oneof = "memo_view::MemoView", tags = "1, 2")]
     pub memo_view: ::core::option::Option<memo_view::MemoView>,
 }
 /// Nested message and enum types in `MemoView`.
 pub mod memo_view {
-    #[derive(Clone, PartialEq, ::prost::Message)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct Visible {
         #[prost(message, optional, tag = "1")]
         pub ciphertext: ::core::option::Option<super::MemoCiphertext>,
@@ -917,7 +922,7 @@ pub mod memo_view {
             "/penumbra.core.transaction.v1.MemoView.Visible".into()
         }
     }
-    #[derive(Clone, PartialEq, ::prost::Message)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct Opaque {
         #[prost(message, optional, tag = "1")]
         pub ciphertext: ::core::option::Option<super::MemoCiphertext>,
@@ -932,7 +937,7 @@ pub mod memo_view {
             "/penumbra.core.transaction.v1.MemoView.Opaque".into()
         }
     }
-    #[derive(Clone, PartialEq, ::prost::Oneof)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Oneof)]
     pub enum MemoView {
         #[prost(message, tag = "1")]
         Visible(Visible),

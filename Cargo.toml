@@ -109,8 +109,8 @@ ark-std                          = { default-features = false, version = "0.4" }
 assert_cmd                       = { version = "2.0" }
 async-stream                     = { version = "0.3.5" }
 async-trait                      = { version = "0.1.52" }
-axum                             = { version = "0.7.9" }
-axum-extra                       = { version = "0.9.6" }
+axum                             = { version = "0.8" }
+axum-extra                       = { version = "0.10" }
 axum-server                      = { version = "0.7.1" }
 base64                           = { version = "0.21.2" }
 bech32                           = { version = "0.8.1" }
@@ -125,7 +125,7 @@ clap                             = { version = "3.2" }
 cnidarium                        = { git = "https://github.com/permissionlessweb/cnidarium", branch = "main", default-features = false}
 cnidarium-component              = { default-features = false, version = "2.1.1", path = "crates/cnidarium-component" }
 cometindex                       = { version = "2.1.1", path = "crates/util/cometindex" }
-criterion                        = { version = "0.4" }
+criterion                        = { version = "0.8.2" }
 decaf377                         = { default-features = false, version = "0.10.1" }
 decaf377-fmd                     = { version = "2.1.1", path = "crates/crypto/decaf377-fmd" }
 decaf377-ka                      = { version = "2.1.1", path = "crates/crypto/decaf377-ka" }
@@ -145,7 +145,7 @@ ibc-types                        = { default-features = false, git = "https://gi
 ibig                             = { version = "0.3" }
 ics23 = { git = "https://github.com/permissionlessweb/ics23", branch = "stable" }
 im                               = { version = "^15.1.0" }
-indicatif                        = { version = "0.16" }
+indicatif                        = { version = "0.18.4" }
 jmt                              = { git = "https://github.com/permissionlessweb/jmt", branch = "main", features = ["migration"] }
 ledger-lib = { git = "https://github.com/ledger-community/rust-ledger", rev = "510bb3ca30639af4bdb12a918b6bbbdb75fa5f52" }
 ledger-proto = { git = "https://github.com/ledger-community/rust-ledger", rev = "510bb3ca30639af4bdb12a918b6bbbdb75fa5f52" }
@@ -192,8 +192,8 @@ penumbra-sdk-wallet                  = { version = "2.1.1", path = "crates/walle
 pin-project                      = { version = "1.0.12" }
 pin-project-lite                 = { version = "0.2.9" }
 poseidon377                      = { version = "1.2.0" }
-proptest                         = { version = "1.6" }
-proptest-derive                  = { version = "0.5.1" }
+proptest                         = { version = "1.0.0" }
+proptest-derive                  = { version = "0.8.0" }
 prost-types                      = { version = "0.14.1" }
 prost                            = { version = "0.14.1" }
 r2d2                             = { version = "0.8" }

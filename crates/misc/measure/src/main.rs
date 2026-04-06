@@ -236,10 +236,10 @@ impl Opt {
 
                 use indicatif::{ProgressBar, ProgressDrawTarget, ProgressStyle};
                 let progress_bar =
-                    ProgressBar::with_draw_target(end_height, ProgressDrawTarget::stderr())
+                    ProgressBar::with_draw_target(Some(end_height), ProgressDrawTarget::stderr())
                         .with_style(ProgressStyle::default_bar().template(
                             "[{elapsed}] {bar:50.cyan/blue} {pos:>7}/{len:7} {per_sec} ETA: {eta}",
-                        ));
+                        )?);
                 progress_bar.set_position(0);
 
                 let mut bytes = 0;

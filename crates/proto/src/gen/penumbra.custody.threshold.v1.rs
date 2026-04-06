@@ -2,7 +2,7 @@
 /// A key one can use to verify signatures.
 ///
 /// This key can also serve as a unique identifier for users.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct VerificationKey {
     #[prost(bytes = "vec", tag = "1")]
     pub inner: ::prost::alloc::vec::Vec<u8>,
@@ -18,7 +18,7 @@ impl ::prost::Name for VerificationKey {
     }
 }
 /// A signature proving that a message was created by the owner of a verification key.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct Signature {
     #[prost(bytes = "vec", tag = "1")]
     pub inner: ::prost::alloc::vec::Vec<u8>,
@@ -80,7 +80,7 @@ pub struct CoordinatorRound2 {
 /// Nested message and enum types in `CoordinatorRound2`.
 pub mod coordinator_round2 {
     /// A commitment along with a FROST identifier.
-    #[derive(Clone, PartialEq, ::prost::Message)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct IdentifiedCommitments {
         /// The serialization of a FROST identifier.
         #[prost(bytes = "vec", tag = "1")]
@@ -225,7 +225,7 @@ impl ::prost::Name for FollowerRound2 {
     }
 }
 /// The first message we broadcast in the DKG protocol.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct DkgRound1 {
     /// The package we're sending to other people
     #[prost(message, optional, tag = "1")]
@@ -267,7 +267,7 @@ pub struct DkgRound2 {
 /// Nested message and enum types in `DKGRound2`.
 pub mod dkg_round2 {
     /// A round2 package, encrypted, along with an identifier for the recipient.
-    #[derive(Clone, PartialEq, ::prost::Message)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct TargetedPackage {
         /// A verification key identifying the recipient.
         #[prost(bytes = "vec", tag = "1")]

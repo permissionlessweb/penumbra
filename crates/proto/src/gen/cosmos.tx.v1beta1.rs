@@ -30,7 +30,7 @@ impl ::prost::Name for Tx {
 /// verification. The binary `serialize(tx: TxRaw)` is stored in Tendermint and
 /// the hash `sha256(serialize(tx: TxRaw))` becomes the "txhash", commonly used
 /// as the transaction ID.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct TxRaw {
     /// body_bytes is a protobuf serialization of a TxBody that matches the
     /// representation in SignDoc.
@@ -57,7 +57,7 @@ impl ::prost::Name for TxRaw {
     }
 }
 /// SignDoc is the type used for generating sign bytes for SIGN_MODE_DIRECT.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct SignDoc {
     /// body_bytes is protobuf serialization of a TxBody that matches the
     /// representation in TxRaw.
@@ -248,7 +248,7 @@ pub mod mode_info {
     /// Single is the mode info for a single signer. It is structured as a message
     /// to allow for additional fields such as locale for SIGN_MODE_TEXTUAL in the
     /// future
-    #[derive(Clone, Copy, PartialEq, ::prost::Message)]
+    #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct Single {
         /// mode is the signing mode of the single signer
         #[prost(enumeration = "super::super::signing::v1beta1::SignMode", tag = "1")]
@@ -401,7 +401,7 @@ impl ::prost::Name for AuxSignerData {
 }
 /// GetTxsEventRequest is the request type for the Service.TxsByEvents
 /// RPC method.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct GetTxsEventRequest {
     /// events is the list of transaction event type.
     /// Deprecated post v0.47.x: use query instead, which should contain a valid
@@ -478,7 +478,7 @@ impl ::prost::Name for GetTxsEventResponse {
 }
 /// BroadcastTxRequest is the request type for the Service.BroadcastTxRequest
 /// RPC method.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct BroadcastTxRequest {
     /// tx_bytes is the raw transaction.
     #[prost(bytes = "vec", tag = "1")]
@@ -564,7 +564,7 @@ impl ::prost::Name for SimulateResponse {
 }
 /// GetTxRequest is the request type for the Service.GetTx
 /// RPC method.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct GetTxRequest {
     /// hash is the tx hash to query, encoded as a hex string.
     #[prost(string, tag = "1")]
@@ -606,7 +606,7 @@ impl ::prost::Name for GetTxResponse {
 /// RPC method.
 ///
 /// Since: cosmos-sdk 0.45.2
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct GetBlockWithTxsRequest {
     /// height is the height of the block to query.
     #[prost(int64, tag = "1")]
@@ -662,7 +662,7 @@ impl ::prost::Name for GetBlockWithTxsResponse {
 /// RPC method.
 ///
 /// Since: cosmos-sdk 0.47
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct TxDecodeRequest {
     /// tx_bytes is the raw transaction.
     #[prost(bytes = "vec", tag = "1")]
@@ -722,7 +722,7 @@ impl ::prost::Name for TxEncodeRequest {
 /// Service.TxEncode method.
 ///
 /// Since: cosmos-sdk 0.47
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct TxEncodeResponse {
     /// tx_bytes is the encoded transaction bytes.
     #[prost(bytes = "vec", tag = "1")]
@@ -742,7 +742,7 @@ impl ::prost::Name for TxEncodeResponse {
 /// RPC method.
 ///
 /// Since: cosmos-sdk 0.47
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct TxEncodeAminoRequest {
     #[prost(string, tag = "1")]
     pub amino_json: ::prost::alloc::string::String,
@@ -761,7 +761,7 @@ impl ::prost::Name for TxEncodeAminoRequest {
 /// RPC method.
 ///
 /// Since: cosmos-sdk 0.47
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct TxEncodeAminoResponse {
     #[prost(bytes = "vec", tag = "1")]
     pub amino_binary: ::prost::alloc::vec::Vec<u8>,
@@ -780,7 +780,7 @@ impl ::prost::Name for TxEncodeAminoResponse {
 /// RPC method.
 ///
 /// Since: cosmos-sdk 0.47
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct TxDecodeAminoRequest {
     #[prost(bytes = "vec", tag = "1")]
     pub amino_binary: ::prost::alloc::vec::Vec<u8>,
@@ -799,7 +799,7 @@ impl ::prost::Name for TxDecodeAminoRequest {
 /// RPC method.
 ///
 /// Since: cosmos-sdk 0.47
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct TxDecodeAminoResponse {
     #[prost(string, tag = "1")]
     pub amino_json: ::prost::alloc::string::String,
@@ -857,6 +857,7 @@ pub enum BroadcastMode {
     Unspecified = 0,
     /// DEPRECATED: use BROADCAST_MODE_SYNC instead,
     /// BROADCAST_MODE_BLOCK is not supported by the SDK from v0.47.x onwards.
+    #[deprecated]
     Block = 1,
     /// BROADCAST_MODE_SYNC defines a tx broadcasting mode where the client waits
     /// for a CheckTx execution response only.
@@ -873,6 +874,7 @@ impl BroadcastMode {
     pub fn as_str_name(&self) -> &'static str {
         match self {
             Self::Unspecified => "BROADCAST_MODE_UNSPECIFIED",
+            #[allow(deprecated)]
             Self::Block => "BROADCAST_MODE_BLOCK",
             Self::Sync => "BROADCAST_MODE_SYNC",
             Self::Async => "BROADCAST_MODE_ASYNC",
@@ -882,7 +884,7 @@ impl BroadcastMode {
     pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
         match value {
             "BROADCAST_MODE_UNSPECIFIED" => Some(Self::Unspecified),
-            "BROADCAST_MODE_BLOCK" => Some(Self::Block),
+            "BROADCAST_MODE_BLOCK" => Some(#[allow(deprecated)] Self::Block),
             "BROADCAST_MODE_SYNC" => Some(Self::Sync),
             "BROADCAST_MODE_ASYNC" => Some(Self::Async),
             _ => None,
@@ -919,7 +921,7 @@ pub mod service_client {
     }
     impl<T> ServiceClient<T>
     where
-        T: tonic::client::GrpcService<tonic::body::BoxBody>,
+        T: tonic::client::GrpcService<tonic::body::Body>,
         T::Error: Into<StdError>,
         T::ResponseBody: Body<Data = Bytes> + std::marker::Send + 'static,
         <T::ResponseBody as Body>::Error: Into<StdError> + std::marker::Send,
@@ -940,13 +942,13 @@ pub mod service_client {
             F: tonic::service::Interceptor,
             T::ResponseBody: Default,
             T: tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
+                http::Request<tonic::body::Body>,
                 Response = http::Response<
-                    <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
+                    <T as tonic::client::GrpcService<tonic::body::Body>>::ResponseBody,
                 >,
             >,
             <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
+                http::Request<tonic::body::Body>,
             >>::Error: Into<StdError> + std::marker::Send + std::marker::Sync,
         {
             ServiceClient::new(InterceptedService::new(inner, interceptor))
@@ -998,7 +1000,7 @@ pub mod service_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/cosmos.tx.v1beta1.Service/Simulate",
             );
@@ -1020,7 +1022,7 @@ pub mod service_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/cosmos.tx.v1beta1.Service/GetTx",
             );
@@ -1045,7 +1047,7 @@ pub mod service_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/cosmos.tx.v1beta1.Service/BroadcastTx",
             );
@@ -1070,7 +1072,7 @@ pub mod service_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/cosmos.tx.v1beta1.Service/GetTxsEvent",
             );
@@ -1097,7 +1099,7 @@ pub mod service_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/cosmos.tx.v1beta1.Service/GetBlockWithTxs",
             );
@@ -1124,7 +1126,7 @@ pub mod service_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/cosmos.tx.v1beta1.Service/TxDecode",
             );
@@ -1151,7 +1153,7 @@ pub mod service_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/cosmos.tx.v1beta1.Service/TxEncode",
             );
@@ -1178,7 +1180,7 @@ pub mod service_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/cosmos.tx.v1beta1.Service/TxEncodeAmino",
             );
@@ -1205,7 +1207,7 @@ pub mod service_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/cosmos.tx.v1beta1.Service/TxDecodeAmino",
             );
@@ -1376,7 +1378,7 @@ pub mod service_server {
         B: Body + std::marker::Send + 'static,
         B::Error: Into<StdError> + std::marker::Send + 'static,
     {
-        type Response = http::Response<tonic::body::BoxBody>;
+        type Response = http::Response<tonic::body::Body>;
         type Error = std::convert::Infallible;
         type Future = BoxFuture<Self::Response, Self::Error>;
         fn poll_ready(
@@ -1415,7 +1417,7 @@ pub mod service_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = SimulateSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1458,7 +1460,7 @@ pub mod service_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = GetTxSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1503,7 +1505,7 @@ pub mod service_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = BroadcastTxSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1548,7 +1550,7 @@ pub mod service_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = GetTxsEventSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1593,7 +1595,7 @@ pub mod service_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = GetBlockWithTxsSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1636,7 +1638,7 @@ pub mod service_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = TxDecodeSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1679,7 +1681,7 @@ pub mod service_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = TxEncodeSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1724,7 +1726,7 @@ pub mod service_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = TxEncodeAminoSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1769,7 +1771,7 @@ pub mod service_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = TxDecodeAminoSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1786,7 +1788,9 @@ pub mod service_server {
                 }
                 _ => {
                     Box::pin(async move {
-                        let mut response = http::Response::new(empty_body());
+                        let mut response = http::Response::new(
+                            tonic::body::Body::default(),
+                        );
                         let headers = response.headers_mut();
                         headers
                             .insert(

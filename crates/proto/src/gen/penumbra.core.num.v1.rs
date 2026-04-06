@@ -4,7 +4,7 @@
 /// of the 128-bit value, respectively. Clients must assemble these bits in their
 /// implementation into a `uint128` or comparable data structure, in order to model
 /// the Amount accurately.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct Amount {
     #[prost(uint64, tag = "1")]
     pub lo: u64,

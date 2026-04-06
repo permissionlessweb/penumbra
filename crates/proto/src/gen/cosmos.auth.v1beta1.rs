@@ -2,7 +2,7 @@
 /// BaseAccount defines a base account type. It contains all the necessary fields
 /// for basic account functionality. Any custom account type should extend this
 /// type for additional functionality (e.g. vesting).
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct BaseAccount {
     #[prost(string, tag = "1")]
     pub address: ::prost::alloc::string::String,
@@ -24,7 +24,7 @@ impl ::prost::Name for BaseAccount {
     }
 }
 /// ModuleAccount defines an account for modules that holds coins on a pool.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ModuleAccount {
     #[prost(message, optional, tag = "1")]
     pub base_account: ::core::option::Option<BaseAccount>,
@@ -46,7 +46,7 @@ impl ::prost::Name for ModuleAccount {
 /// ModuleCredential represents a unclaimable pubkey for base accounts controlled by modules.
 ///
 /// Since: cosmos-sdk 0.47
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ModuleCredential {
     /// module_name is the name of the module used for address derivation (passed into address.Module).
     #[prost(string, tag = "1")]
@@ -67,7 +67,7 @@ impl ::prost::Name for ModuleCredential {
     }
 }
 /// Params defines the parameters for the auth module.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct Params {
     #[prost(uint64, tag = "1")]
     pub max_memo_characters: u64,

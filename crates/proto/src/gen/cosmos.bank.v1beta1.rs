@@ -25,7 +25,7 @@ impl ::prost::Name for Params {
 }
 /// SendEnabled maps coin denom to a send_enabled status (whether a denom is
 /// sendable).
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct SendEnabled {
     #[prost(string, tag = "1")]
     pub denom: ::prost::alloc::string::String,
@@ -98,7 +98,7 @@ impl ::prost::Name for Supply {
 }
 /// DenomUnit represents a struct that describes a given
 /// denomination unit of the basic token.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct DenomUnit {
     /// denom represents the string name of the given denom unit (e.g uatom).
     #[prost(string, tag = "1")]
@@ -174,7 +174,7 @@ impl ::prost::Name for Metadata {
     }
 }
 /// QueryBalanceRequest is the request type for the Query/Balance RPC method.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct QueryBalanceRequest {
     /// address is the address to query balances for.
     #[prost(string, tag = "1")]
@@ -194,7 +194,7 @@ impl ::prost::Name for QueryBalanceRequest {
     }
 }
 /// QueryBalanceResponse is the response type for the Query/Balance RPC method.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct QueryBalanceResponse {
     /// balance is the balance of the coin.
     #[prost(message, optional, tag = "1")]
@@ -211,7 +211,7 @@ impl ::prost::Name for QueryBalanceResponse {
     }
 }
 /// QueryBalanceRequest is the request type for the Query/AllBalances RPC method.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct QueryAllBalancesRequest {
     /// address is the address to query balances for.
     #[prost(string, tag = "1")]
@@ -264,7 +264,7 @@ impl ::prost::Name for QueryAllBalancesResponse {
 /// an account's spendable balances.
 ///
 /// Since: cosmos-sdk 0.46
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct QuerySpendableBalancesRequest {
     /// address is the address to query spendable balances for.
     #[prost(string, tag = "1")]
@@ -314,7 +314,7 @@ impl ::prost::Name for QuerySpendableBalancesResponse {
 /// querying an account's spendable balance for a specific denom.
 ///
 /// Since: cosmos-sdk 0.47
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct QuerySpendableBalanceByDenomRequest {
     /// address is the address to query balances for.
     #[prost(string, tag = "1")]
@@ -337,7 +337,7 @@ impl ::prost::Name for QuerySpendableBalanceByDenomRequest {
 /// querying an account's spendable balance for a specific denom.
 ///
 /// Since: cosmos-sdk 0.47
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct QuerySpendableBalanceByDenomResponse {
     /// balance is the balance of the coin.
     #[prost(message, optional, tag = "1")]
@@ -355,7 +355,7 @@ impl ::prost::Name for QuerySpendableBalanceByDenomResponse {
 }
 /// QueryTotalSupplyRequest is the request type for the Query/TotalSupply RPC
 /// method.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct QueryTotalSupplyRequest {
     /// pagination defines an optional pagination for the request.
     ///
@@ -401,7 +401,7 @@ impl ::prost::Name for QueryTotalSupplyResponse {
     }
 }
 /// QuerySupplyOfRequest is the request type for the Query/SupplyOf RPC method.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct QuerySupplyOfRequest {
     /// denom is the coin denom to query balances for.
     #[prost(string, tag = "1")]
@@ -418,7 +418,7 @@ impl ::prost::Name for QuerySupplyOfRequest {
     }
 }
 /// QuerySupplyOfResponse is the response type for the Query/SupplyOf RPC method.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct QuerySupplyOfResponse {
     /// amount is the supply of the coin.
     #[prost(message, optional, tag = "1")]
@@ -435,7 +435,7 @@ impl ::prost::Name for QuerySupplyOfResponse {
     }
 }
 /// QueryParamsRequest defines the request type for querying x/bank parameters.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct QueryParamsRequest {}
 impl ::prost::Name for QueryParamsRequest {
     const NAME: &'static str = "QueryParamsRequest";
@@ -464,7 +464,7 @@ impl ::prost::Name for QueryParamsResponse {
     }
 }
 /// QueryDenomsMetadataRequest is the request type for the Query/DenomsMetadata RPC method.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct QueryDenomsMetadataRequest {
     /// pagination defines an optional pagination for the request.
     #[prost(message, optional, tag = "1")]
@@ -506,7 +506,7 @@ impl ::prost::Name for QueryDenomsMetadataResponse {
     }
 }
 /// QueryDenomMetadataRequest is the request type for the Query/DenomMetadata RPC method.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct QueryDenomMetadataRequest {
     /// denom is the coin denom to query the metadata for.
     #[prost(string, tag = "1")]
@@ -543,7 +543,7 @@ impl ::prost::Name for QueryDenomMetadataResponse {
 /// QueryDenomOwnersRequest defines the request type for the DenomOwners RPC query,
 /// which queries for a paginated set of all account holders of a particular
 /// denomination.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct QueryDenomOwnersRequest {
     /// denom defines the coin denomination to query all account holders for.
     #[prost(string, tag = "1")]
@@ -569,7 +569,7 @@ impl ::prost::Name for QueryDenomOwnersRequest {
 /// balance of the denominated token.
 ///
 /// Since: cosmos-sdk 0.46
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct DenomOwner {
     /// address defines the address that owns a particular denomination.
     #[prost(string, tag = "1")]
@@ -614,7 +614,7 @@ impl ::prost::Name for QueryDenomOwnersResponse {
 /// QuerySendEnabledRequest defines the RPC request for looking up SendEnabled entries.
 ///
 /// Since: cosmos-sdk 0.47
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct QuerySendEnabledRequest {
     /// denoms is the specific denoms you want look up. Leave empty to get all entries.
     #[prost(string, repeated, tag = "1")]
@@ -690,7 +690,7 @@ pub mod query_client {
     }
     impl<T> QueryClient<T>
     where
-        T: tonic::client::GrpcService<tonic::body::BoxBody>,
+        T: tonic::client::GrpcService<tonic::body::Body>,
         T::Error: Into<StdError>,
         T::ResponseBody: Body<Data = Bytes> + std::marker::Send + 'static,
         <T::ResponseBody as Body>::Error: Into<StdError> + std::marker::Send,
@@ -711,13 +711,13 @@ pub mod query_client {
             F: tonic::service::Interceptor,
             T::ResponseBody: Default,
             T: tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
+                http::Request<tonic::body::Body>,
                 Response = http::Response<
-                    <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
+                    <T as tonic::client::GrpcService<tonic::body::Body>>::ResponseBody,
                 >,
             >,
             <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
+                http::Request<tonic::body::Body>,
             >>::Error: Into<StdError> + std::marker::Send + std::marker::Sync,
         {
             QueryClient::new(InterceptedService::new(inner, interceptor))
@@ -769,7 +769,7 @@ pub mod query_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/cosmos.bank.v1beta1.Query/Balance",
             );
@@ -797,7 +797,7 @@ pub mod query_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/cosmos.bank.v1beta1.Query/AllBalances",
             );
@@ -828,7 +828,7 @@ pub mod query_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/cosmos.bank.v1beta1.Query/SpendableBalances",
             );
@@ -861,7 +861,7 @@ pub mod query_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/cosmos.bank.v1beta1.Query/SpendableBalanceByDenom",
             );
@@ -894,7 +894,7 @@ pub mod query_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/cosmos.bank.v1beta1.Query/TotalSupply",
             );
@@ -922,7 +922,7 @@ pub mod query_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/cosmos.bank.v1beta1.Query/SupplyOf",
             );
@@ -947,7 +947,7 @@ pub mod query_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/cosmos.bank.v1beta1.Query/Params",
             );
@@ -972,7 +972,7 @@ pub mod query_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/cosmos.bank.v1beta1.Query/DenomMetadata",
             );
@@ -998,7 +998,7 @@ pub mod query_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/cosmos.bank.v1beta1.Query/DenomsMetadata",
             );
@@ -1029,7 +1029,7 @@ pub mod query_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/cosmos.bank.v1beta1.Query/DenomOwners",
             );
@@ -1060,7 +1060,7 @@ pub mod query_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/cosmos.bank.v1beta1.Query/SendEnabled",
             );
@@ -1274,7 +1274,7 @@ pub mod query_server {
         B: Body + std::marker::Send + 'static,
         B::Error: Into<StdError> + std::marker::Send + 'static,
     {
-        type Response = http::Response<tonic::body::BoxBody>;
+        type Response = http::Response<tonic::body::Body>;
         type Error = std::convert::Infallible;
         type Future = BoxFuture<Self::Response, Self::Error>;
         fn poll_ready(
@@ -1315,7 +1315,7 @@ pub mod query_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = BalanceSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1360,7 +1360,7 @@ pub mod query_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = AllBalancesSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1405,7 +1405,7 @@ pub mod query_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = SpendableBalancesSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1454,7 +1454,7 @@ pub mod query_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = SpendableBalanceByDenomSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1499,7 +1499,7 @@ pub mod query_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = TotalSupplySvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1544,7 +1544,7 @@ pub mod query_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = SupplyOfSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1587,7 +1587,7 @@ pub mod query_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = ParamsSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1632,7 +1632,7 @@ pub mod query_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = DenomMetadataSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1677,7 +1677,7 @@ pub mod query_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = DenomsMetadataSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1722,7 +1722,7 @@ pub mod query_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = DenomOwnersSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1767,7 +1767,7 @@ pub mod query_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = SendEnabledSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1784,7 +1784,9 @@ pub mod query_server {
                 }
                 _ => {
                     Box::pin(async move {
-                        let mut response = http::Response::new(empty_body());
+                        let mut response = http::Response::new(
+                            tonic::body::Body::default(),
+                        );
                         let headers = response.headers_mut();
                         headers
                             .insert(

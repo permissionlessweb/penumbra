@@ -55,7 +55,7 @@ impl ::prost::Name for Request {
         "/tendermint.abci.Request".into()
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct RequestEcho {
     #[prost(string, tag = "1")]
     pub message: ::prost::alloc::string::String,
@@ -70,7 +70,7 @@ impl ::prost::Name for RequestEcho {
         "/tendermint.abci.RequestEcho".into()
     }
 }
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct RequestFlush {}
 impl ::prost::Name for RequestFlush {
     const NAME: &'static str = "RequestFlush";
@@ -82,7 +82,7 @@ impl ::prost::Name for RequestFlush {
         "/tendermint.abci.RequestFlush".into()
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct RequestInfo {
     #[prost(string, tag = "1")]
     pub version: ::prost::alloc::string::String,
@@ -128,7 +128,7 @@ impl ::prost::Name for RequestInitChain {
         "/tendermint.abci.RequestInitChain".into()
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct RequestQuery {
     #[prost(bytes = "vec", tag = "1")]
     pub data: ::prost::alloc::vec::Vec<u8>,
@@ -170,7 +170,7 @@ impl ::prost::Name for RequestBeginBlock {
         "/tendermint.abci.RequestBeginBlock".into()
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct RequestCheckTx {
     #[prost(bytes = "vec", tag = "1")]
     pub tx: ::prost::alloc::vec::Vec<u8>,
@@ -187,7 +187,7 @@ impl ::prost::Name for RequestCheckTx {
         "/tendermint.abci.RequestCheckTx".into()
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct RequestDeliverTx {
     #[prost(bytes = "vec", tag = "1")]
     pub tx: ::prost::alloc::vec::Vec<u8>,
@@ -202,7 +202,7 @@ impl ::prost::Name for RequestDeliverTx {
         "/tendermint.abci.RequestDeliverTx".into()
     }
 }
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct RequestEndBlock {
     #[prost(int64, tag = "1")]
     pub height: i64,
@@ -217,7 +217,7 @@ impl ::prost::Name for RequestEndBlock {
         "/tendermint.abci.RequestEndBlock".into()
     }
 }
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct RequestCommit {}
 impl ::prost::Name for RequestCommit {
     const NAME: &'static str = "RequestCommit";
@@ -230,7 +230,7 @@ impl ::prost::Name for RequestCommit {
     }
 }
 /// lists available snapshots
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct RequestListSnapshots {}
 impl ::prost::Name for RequestListSnapshots {
     const NAME: &'static str = "RequestListSnapshots";
@@ -243,7 +243,7 @@ impl ::prost::Name for RequestListSnapshots {
     }
 }
 /// offers a snapshot to the application
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct RequestOfferSnapshot {
     /// snapshot offered by peers
     #[prost(message, optional, tag = "1")]
@@ -263,7 +263,7 @@ impl ::prost::Name for RequestOfferSnapshot {
     }
 }
 /// loads a snapshot chunk
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct RequestLoadSnapshotChunk {
     #[prost(uint64, tag = "1")]
     pub height: u64,
@@ -283,7 +283,7 @@ impl ::prost::Name for RequestLoadSnapshotChunk {
     }
 }
 /// Applies a snapshot chunk
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct RequestApplySnapshotChunk {
     #[prost(uint32, tag = "1")]
     pub index: u32,
@@ -425,7 +425,7 @@ impl ::prost::Name for Response {
     }
 }
 /// nondeterministic
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ResponseException {
     #[prost(string, tag = "1")]
     pub error: ::prost::alloc::string::String,
@@ -440,7 +440,7 @@ impl ::prost::Name for ResponseException {
         "/tendermint.abci.ResponseException".into()
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ResponseEcho {
     #[prost(string, tag = "1")]
     pub message: ::prost::alloc::string::String,
@@ -455,7 +455,7 @@ impl ::prost::Name for ResponseEcho {
         "/tendermint.abci.ResponseEcho".into()
     }
 }
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ResponseFlush {}
 impl ::prost::Name for ResponseFlush {
     const NAME: &'static str = "ResponseFlush";
@@ -467,7 +467,7 @@ impl ::prost::Name for ResponseFlush {
         "/tendermint.abci.ResponseFlush".into()
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ResponseInfo {
     #[prost(string, tag = "1")]
     pub data: ::prost::alloc::string::String,
@@ -649,7 +649,7 @@ impl ::prost::Name for ResponseEndBlock {
         "/tendermint.abci.ResponseEndBlock".into()
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ResponseCommit {
     /// reserve 1
     #[prost(bytes = "vec", tag = "2")]
@@ -682,7 +682,7 @@ impl ::prost::Name for ResponseListSnapshots {
         "/tendermint.abci.ResponseListSnapshots".into()
     }
 }
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ResponseOfferSnapshot {
     #[prost(enumeration = "response_offer_snapshot::Result", tag = "1")]
     pub result: i32,
@@ -754,7 +754,7 @@ impl ::prost::Name for ResponseOfferSnapshot {
         "/tendermint.abci.ResponseOfferSnapshot".into()
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ResponseLoadSnapshotChunk {
     #[prost(bytes = "vec", tag = "1")]
     pub chunk: ::prost::alloc::vec::Vec<u8>,
@@ -769,7 +769,7 @@ impl ::prost::Name for ResponseLoadSnapshotChunk {
         "/tendermint.abci.ResponseLoadSnapshotChunk".into()
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ResponseApplySnapshotChunk {
     #[prost(enumeration = "response_apply_snapshot_chunk::Result", tag = "1")]
     pub result: i32,
@@ -847,7 +847,7 @@ impl ::prost::Name for ResponseApplySnapshotChunk {
         "/tendermint.abci.ResponseApplySnapshotChunk".into()
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ResponsePrepareProposal {
     #[prost(bytes = "vec", repeated, tag = "1")]
     pub txs: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
@@ -862,7 +862,7 @@ impl ::prost::Name for ResponsePrepareProposal {
         "/tendermint.abci.ResponsePrepareProposal".into()
     }
 }
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ResponseProcessProposal {
     #[prost(enumeration = "response_process_proposal::ProposalStatus", tag = "1")]
     pub status: i32,
@@ -977,7 +977,7 @@ impl ::prost::Name for Event {
     }
 }
 /// EventAttribute is a single key-value pair, associated with an event.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct EventAttribute {
     #[prost(string, tag = "1")]
     pub key: ::prost::alloc::string::String,
@@ -1022,7 +1022,7 @@ impl ::prost::Name for TxResult {
     }
 }
 /// Validator
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct Validator {
     /// The first 20 bytes of SHA256(public key)
     #[prost(bytes = "vec", tag = "1")]
@@ -1044,7 +1044,7 @@ impl ::prost::Name for Validator {
     }
 }
 /// ValidatorUpdate
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ValidatorUpdate {
     #[prost(message, optional, tag = "1")]
     pub pub_key: ::core::option::Option<super::crypto::PublicKey>,
@@ -1062,7 +1062,7 @@ impl ::prost::Name for ValidatorUpdate {
     }
 }
 /// VoteInfo
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct VoteInfo {
     #[prost(message, optional, tag = "1")]
     pub validator: ::core::option::Option<Validator>,
@@ -1079,7 +1079,7 @@ impl ::prost::Name for VoteInfo {
         "/tendermint.abci.VoteInfo".into()
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ExtendedVoteInfo {
     #[prost(message, optional, tag = "1")]
     pub validator: ::core::option::Option<Validator>,
@@ -1099,7 +1099,7 @@ impl ::prost::Name for ExtendedVoteInfo {
         "/tendermint.abci.ExtendedVoteInfo".into()
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct Misbehavior {
     #[prost(enumeration = "MisbehaviorType", tag = "1")]
     pub r#type: i32,
@@ -1128,7 +1128,7 @@ impl ::prost::Name for Misbehavior {
         "/tendermint.abci.Misbehavior".into()
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct Snapshot {
     /// The height at which the snapshot was taken
     #[prost(uint64, tag = "1")]
@@ -1240,7 +1240,7 @@ pub mod abci_application_client {
     }
     impl<T> AbciApplicationClient<T>
     where
-        T: tonic::client::GrpcService<tonic::body::BoxBody>,
+        T: tonic::client::GrpcService<tonic::body::Body>,
         T::Error: Into<StdError>,
         T::ResponseBody: Body<Data = Bytes> + std::marker::Send + 'static,
         <T::ResponseBody as Body>::Error: Into<StdError> + std::marker::Send,
@@ -1261,13 +1261,13 @@ pub mod abci_application_client {
             F: tonic::service::Interceptor,
             T::ResponseBody: Default,
             T: tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
+                http::Request<tonic::body::Body>,
                 Response = http::Response<
-                    <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
+                    <T as tonic::client::GrpcService<tonic::body::Body>>::ResponseBody,
                 >,
             >,
             <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
+                http::Request<tonic::body::Body>,
             >>::Error: Into<StdError> + std::marker::Send + std::marker::Sync,
         {
             AbciApplicationClient::new(InterceptedService::new(inner, interceptor))
@@ -1315,7 +1315,7 @@ pub mod abci_application_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/tendermint.abci.ABCIApplication/Echo",
             );
@@ -1336,7 +1336,7 @@ pub mod abci_application_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/tendermint.abci.ABCIApplication/Flush",
             );
@@ -1357,7 +1357,7 @@ pub mod abci_application_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/tendermint.abci.ABCIApplication/Info",
             );
@@ -1381,7 +1381,7 @@ pub mod abci_application_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/tendermint.abci.ABCIApplication/DeliverTx",
             );
@@ -1405,7 +1405,7 @@ pub mod abci_application_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/tendermint.abci.ABCIApplication/CheckTx",
             );
@@ -1426,7 +1426,7 @@ pub mod abci_application_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/tendermint.abci.ABCIApplication/Query",
             );
@@ -1447,7 +1447,7 @@ pub mod abci_application_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/tendermint.abci.ABCIApplication/Commit",
             );
@@ -1471,7 +1471,7 @@ pub mod abci_application_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/tendermint.abci.ABCIApplication/InitChain",
             );
@@ -1495,7 +1495,7 @@ pub mod abci_application_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/tendermint.abci.ABCIApplication/BeginBlock",
             );
@@ -1521,7 +1521,7 @@ pub mod abci_application_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/tendermint.abci.ABCIApplication/EndBlock",
             );
@@ -1545,7 +1545,7 @@ pub mod abci_application_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/tendermint.abci.ABCIApplication/ListSnapshots",
             );
@@ -1571,7 +1571,7 @@ pub mod abci_application_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/tendermint.abci.ABCIApplication/OfferSnapshot",
             );
@@ -1597,7 +1597,7 @@ pub mod abci_application_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/tendermint.abci.ABCIApplication/LoadSnapshotChunk",
             );
@@ -1626,7 +1626,7 @@ pub mod abci_application_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/tendermint.abci.ABCIApplication/ApplySnapshotChunk",
             );
@@ -1655,7 +1655,7 @@ pub mod abci_application_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/tendermint.abci.ABCIApplication/PrepareProposal",
             );
@@ -1681,7 +1681,7 @@ pub mod abci_application_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/tendermint.abci.ABCIApplication/ProcessProposal",
             );
@@ -1868,7 +1868,7 @@ pub mod abci_application_server {
         B: Body + std::marker::Send + 'static,
         B::Error: Into<StdError> + std::marker::Send + 'static,
     {
-        type Response = http::Response<tonic::body::BoxBody>;
+        type Response = http::Response<tonic::body::Body>;
         type Error = std::convert::Infallible;
         type Future = BoxFuture<Self::Response, Self::Error>;
         fn poll_ready(
@@ -1908,7 +1908,7 @@ pub mod abci_application_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = EchoSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1952,7 +1952,7 @@ pub mod abci_application_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = FlushSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -1996,7 +1996,7 @@ pub mod abci_application_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = InfoSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -2041,7 +2041,7 @@ pub mod abci_application_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = DeliverTxSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -2086,7 +2086,7 @@ pub mod abci_application_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = CheckTxSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -2130,7 +2130,7 @@ pub mod abci_application_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = QuerySvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -2175,7 +2175,7 @@ pub mod abci_application_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = CommitSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -2220,7 +2220,7 @@ pub mod abci_application_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = InitChainSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -2265,7 +2265,7 @@ pub mod abci_application_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = BeginBlockSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -2310,7 +2310,7 @@ pub mod abci_application_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = EndBlockSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -2356,7 +2356,7 @@ pub mod abci_application_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = ListSnapshotsSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -2402,7 +2402,7 @@ pub mod abci_application_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = OfferSnapshotSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -2448,7 +2448,7 @@ pub mod abci_application_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = LoadSnapshotChunkSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -2497,7 +2497,7 @@ pub mod abci_application_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = ApplySnapshotChunkSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -2543,7 +2543,7 @@ pub mod abci_application_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = PrepareProposalSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -2589,7 +2589,7 @@ pub mod abci_application_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = ProcessProposalSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -2606,7 +2606,9 @@ pub mod abci_application_server {
                 }
                 _ => {
                     Box::pin(async move {
-                        let mut response = http::Response::new(empty_body());
+                        let mut response = http::Response::new(
+                            tonic::body::Body::default(),
+                        );
                         let headers = response.headers_mut();
                         headers
                             .insert(

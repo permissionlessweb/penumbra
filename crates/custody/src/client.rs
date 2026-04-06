@@ -38,7 +38,7 @@ pub trait CustodyClient {
 
 impl<T> CustodyClient for CustodyServiceClient<T>
 where
-    T: tonic::client::GrpcService<tonic::body::BoxBody> + Send + Clone + 'static,
+    T: tonic::client::GrpcService<tonic::body::Body> + Send + Clone + 'static,
     T::ResponseBody: tonic::codegen::Body<Data = Bytes> + Send + 'static,
     T::Future: Send + 'static,
     T::Error: Into<tonic::codegen::StdError>,

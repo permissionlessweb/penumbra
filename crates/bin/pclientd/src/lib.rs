@@ -27,6 +27,7 @@ use rpassword::prompt_password;
 use serde::{Deserialize, Serialize};
 use serde_with::{serde_as, DisplayFromStr};
 use tempfile::NamedTempFile;
+use tower::Layer;
 
 use std::fs;
 use std::fs::File;
@@ -346,31 +347,34 @@ impl Opt {
                     CustodyServiceServer::new(SoftKms::new(kms_config.spend_key.clone().into()))
                 });
 
+                let we = tonic_web::GrpcWebLayer::new();
                 let server = Server::builder()
                     .accept_http1(true)
-                    .add_service(tonic_web::enable(view_service))
-                    .add_optional_service(custody_service.map(tonic_web::enable))
-                    .add_service(tonic_web::enable(app_query_proxy))
-                    .add_service(tonic_web::enable(governance_query_proxy))
-                    .add_service(tonic_web::enable(dex_query_proxy))
-                    .add_service(tonic_web::enable(dex_simulation_proxy))
-                    .add_service(tonic_web::enable(sct_query_proxy))
-                    .add_service(tonic_web::enable(fee_query_proxy))
-                    .add_service(tonic_web::enable(shielded_pool_query_proxy))
-                    .add_service(tonic_web::enable(chain_query_proxy))
-                    .add_service(tonic_web::enable(stake_query_proxy))
-                    .add_service(tonic_web::enable(compact_block_query_proxy))
-                    .add_service(tonic_web::enable(tendermint_proxy_proxy))
+                    .add_service(we.layer(view_service))
+                    .add_optional_service(custody_service.map(|s| we.layer(s)))
+                    .add_service(we.layer(app_query_proxy))
+                    .add_service(we.layer(governance_query_proxy))
+                    .add_service(we.layer(dex_query_proxy))
+                    .add_service(we.layer(dex_simulation_proxy))
+                    .add_service(we.layer(sct_query_proxy))
+                    .add_service(we.layer(fee_query_proxy))
+                    .add_service(we.layer(shielded_pool_query_proxy))
+                    .add_service(we.layer(chain_query_proxy))
+                    .add_service(we.layer(stake_query_proxy))
+                    .add_service(we.layer(compact_block_query_proxy))
+                    .add_service(we.layer(tendermint_proxy_proxy))
                     // TODO: should we add the IBC services here as well? they will appear
                     // in reflection but not be available.
-                    .add_service(tonic_web::enable(
-                        tonic_reflection::server::Builder::configure()
-                            .register_encoded_file_descriptor_set(
-                                penumbra_sdk_proto::FILE_DESCRIPTOR_SET,
-                            )
-                            .build_v1()
-                            .with_context(|| "could not configure grpc reflection service")?,
-                    ))
+                    .add_service(
+                        we.layer(
+                            tonic_reflection::server::Builder::configure()
+                                .register_encoded_file_descriptor_set(
+                                    penumbra_sdk_proto::FILE_DESCRIPTOR_SET,
+                                )
+                                .build_v1()
+                                .with_context(|| "could not configure grpc reflection service")?,
+                        ),
+                    )
                     .serve(config.bind_addr);
 
                 tokio::spawn(server).await??;

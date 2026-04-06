@@ -57,7 +57,7 @@ impl ::prost::Name for CompactBlock {
     }
 }
 /// An encrypted payload, corresponding to a single commitment in the state commitment tree.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct StatePayload {
     /// The source of the payload, if known.
     #[prost(message, optional, tag = "1")]
@@ -68,7 +68,7 @@ pub struct StatePayload {
 }
 /// Nested message and enum types in `StatePayload`.
 pub mod state_payload {
-    #[derive(Clone, PartialEq, ::prost::Message)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct RolledUp {
         #[prost(message, optional, tag = "1")]
         pub commitment: ::core::option::Option<
@@ -85,7 +85,7 @@ pub mod state_payload {
             "/penumbra.core.component.compact_block.v1.StatePayload.RolledUp".into()
         }
     }
-    #[derive(Clone, PartialEq, ::prost::Message)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct Note {
         #[prost(message, optional, tag = "2")]
         pub note: ::core::option::Option<
@@ -102,7 +102,7 @@ pub mod state_payload {
             "/penumbra.core.component.compact_block.v1.StatePayload.Note".into()
         }
     }
-    #[derive(Clone, PartialEq, ::prost::Message)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct Swap {
         #[prost(message, optional, tag = "2")]
         pub swap: ::core::option::Option<super::super::super::dex::v1::SwapPayload>,
@@ -118,7 +118,7 @@ pub mod state_payload {
         }
     }
     /// The state payload itself.
-    #[derive(Clone, PartialEq, ::prost::Oneof)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Oneof)]
     pub enum StatePayload {
         #[prost(message, tag = "2")]
         RolledUp(RolledUp),
@@ -139,7 +139,7 @@ impl ::prost::Name for StatePayload {
     }
 }
 /// Requests a range of compact block data.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CompactBlockRangeRequest {
     /// The start height of the range.
     #[prost(uint64, tag = "2")]
@@ -177,7 +177,7 @@ impl ::prost::Name for CompactBlockRangeResponse {
         "/penumbra.core.component.compact_block.v1.CompactBlockRangeResponse".into()
     }
 }
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CompactBlockRequest {
     #[prost(uint64, tag = "1")]
     pub height: u64,
@@ -237,7 +237,7 @@ pub mod query_service_client {
     }
     impl<T> QueryServiceClient<T>
     where
-        T: tonic::client::GrpcService<tonic::body::BoxBody>,
+        T: tonic::client::GrpcService<tonic::body::Body>,
         T::Error: Into<StdError>,
         T::ResponseBody: Body<Data = Bytes> + std::marker::Send + 'static,
         <T::ResponseBody as Body>::Error: Into<StdError> + std::marker::Send,
@@ -258,13 +258,13 @@ pub mod query_service_client {
             F: tonic::service::Interceptor,
             T::ResponseBody: Default,
             T: tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
+                http::Request<tonic::body::Body>,
                 Response = http::Response<
-                    <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
+                    <T as tonic::client::GrpcService<tonic::body::Body>>::ResponseBody,
                 >,
             >,
             <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
+                http::Request<tonic::body::Body>,
             >>::Error: Into<StdError> + std::marker::Send + std::marker::Sync,
         {
             QueryServiceClient::new(InterceptedService::new(inner, interceptor))
@@ -316,7 +316,7 @@ pub mod query_service_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/penumbra.core.component.compact_block.v1.QueryService/CompactBlockRange",
             );
@@ -348,7 +348,7 @@ pub mod query_service_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/penumbra.core.component.compact_block.v1.QueryService/CompactBlock",
             );
@@ -472,7 +472,7 @@ pub mod query_service_server {
         B: Body + std::marker::Send + 'static,
         B::Error: Into<StdError> + std::marker::Send + 'static,
     {
-        type Response = http::Response<tonic::body::BoxBody>;
+        type Response = http::Response<tonic::body::Body>;
         type Error = std::convert::Infallible;
         type Future = BoxFuture<Self::Response, Self::Error>;
         fn poll_ready(
@@ -516,7 +516,7 @@ pub mod query_service_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = CompactBlockRangeSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -561,7 +561,7 @@ pub mod query_service_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = CompactBlockSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -578,7 +578,9 @@ pub mod query_service_server {
                 }
                 _ => {
                     Box::pin(async move {
-                        let mut response = http::Response::new(empty_body());
+                        let mut response = http::Response::new(
+                            tonic::body::Body::default(),
+                        );
                         let headers = response.headers_mut();
                         headers
                             .insert(

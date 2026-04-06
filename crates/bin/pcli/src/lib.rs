@@ -66,12 +66,12 @@ impl App {
 
         use indicatif::{ProgressBar, ProgressDrawTarget, ProgressStyle};
         let progress_bar = ProgressBar::with_draw_target(
-            initial_status.latest_known_block_height - initial_status.full_sync_height,
+            Some(initial_status.latest_known_block_height - initial_status.full_sync_height),
             ProgressDrawTarget::stdout(),
         )
         .with_style(
             ProgressStyle::default_bar()
-                .template("[{elapsed}] {bar:50.cyan/blue} {pos:>7}/{len:7} {per_sec} ETA: {eta}"),
+                .template("[{elapsed}] {bar:50.cyan/blue} {pos:>7}/{len:7} {per_sec} ETA: {eta}")?,
         );
         progress_bar.set_position(0);
 

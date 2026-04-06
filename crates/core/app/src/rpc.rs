@@ -59,8 +59,9 @@ use {
     penumbra_sdk_shielded_pool::component::rpc::Server as ShieldedPoolServer,
     penumbra_sdk_stake::component::rpc::Server as StakeServer,
     tonic::service::Routes,
-    tonic_web::enable as we,
 };
+
+use tower::Layer;
 
 pub fn routes(
     storage: &cnidarium::Storage,
@@ -68,6 +69,7 @@ pub fn routes(
     _enable_expensive_rpc: bool,
 ) -> anyhow::Result<tonic::service::Routes> {
     let ibc = penumbra_sdk_ibc::component::rpc::IbcQuery::<PenumbraHost>::new(storage.clone());
+    let we = tonic_web::GrpcWebLayer::new();
 
     let mut builder = Routes::builder();
     builder
@@ -79,56 +81,56 @@ pub fn routes(
         // new blocks.
         // .timeout(std::time::Duration::from_secs(7))
         // Wrap each of the gRPC services in a tonic-web proxy:
-        .add_service(we(StorageQueryServiceServer::new(StorageServer::new(
+        .add_service(we.layer(StorageQueryServiceServer::new(StorageServer::new(
             storage.clone(),
         ))))
-        .add_service(we(AuctionQueryServiceServer::new(AuctionServer::new(
+        .add_service(we.layer(AuctionQueryServiceServer::new(AuctionServer::new(
             storage.clone(),
         ))))
-        .add_service(we(AppQueryServiceServer::new(AppQueryServer::new(
+        .add_service(we.layer(AppQueryServiceServer::new(AppQueryServer::new(
             storage.clone(),
         ))))
-        .add_service(we(CompactBlockQueryServiceServer::new(
+        .add_service(we.layer(CompactBlockQueryServiceServer::new(
             CompactBlockServer::new(storage.clone()),
         )))
-        .add_service(we(DexQueryServiceServer::new(DexServer::new(
+        .add_service(we.layer(DexQueryServiceServer::new(DexServer::new(
             storage.clone(),
         ))))
-        .add_service(we(FeeQueryServiceServer::new(FeeServer::new(
+        .add_service(we.layer(FeeQueryServiceServer::new(FeeServer::new(
             storage.clone(),
         ))))
-        .add_service(we(GovernanceQueryServiceServer::new(
+        .add_service(we.layer(GovernanceQueryServiceServer::new(
             GovernanceServer::new(storage.clone()),
         )))
-        .add_service(we(SctQueryServiceServer::new(SctServer::new(
+        .add_service(we.layer(SctQueryServiceServer::new(SctServer::new(
             storage.clone(),
         ))))
-        .add_service(we(ShieldedPoolQueryServiceServer::new(
+        .add_service(we.layer(ShieldedPoolQueryServiceServer::new(
             ShieldedPoolServer::new(storage.clone()),
         )))
-        .add_service(we(TransferQueryServer::new(ShieldedPoolServer::new(
+        .add_service(we.layer(TransferQueryServer::new(ShieldedPoolServer::new(
             storage.clone(),
         ))))
-        .add_service(we(BankQueryServer::new(ShieldedPoolServer::new(
+        .add_service(we.layer(BankQueryServer::new(ShieldedPoolServer::new(
             storage.clone(),
         ))))
-        .add_service(we(CommunityPoolQueryServiceServer::new(
+        .add_service(we.layer(CommunityPoolQueryServiceServer::new(
             CommunityPoolServer::new(storage.clone()),
         )))
-        .add_service(we(StakeQueryServiceServer::new(StakeServer::new(
+        .add_service(we.layer(StakeQueryServiceServer::new(StakeServer::new(
             storage.clone(),
         ))))
-        .add_service(we(ClientQueryServer::new(ibc.clone())))
-        .add_service(we(ChannelQueryServer::new(ibc.clone())))
-        .add_service(we(ConnectionQueryServer::new(ibc.clone())))
-        .add_service(we(TendermintProxyServiceServer::new(tm_proxy)))
-        .add_service(we(SimulationServiceServer::new(DexServer::new(
+        .add_service(we.layer(ClientQueryServer::new(ibc.clone())))
+        .add_service(we.layer(ChannelQueryServer::new(ibc.clone())))
+        .add_service(we.layer(ConnectionQueryServer::new(ibc.clone())))
+        .add_service(we.layer(TendermintProxyServiceServer::new(tm_proxy)))
+        .add_service(we.layer(SimulationServiceServer::new(DexServer::new(
             storage.clone(),
         ))))
-        .add_service(we(FundingQueryServiceServer::new(FundingServer::new(
+        .add_service(we.layer(FundingQueryServiceServer::new(FundingServer::new(
             storage.clone(),
         ))))
-        .add_service(we(tonic_reflection::server::Builder::configure()
+        .add_service(we.layer(tonic_reflection::server::Builder::configure()
             .register_encoded_file_descriptor_set(penumbra_sdk_proto::FILE_DESCRIPTOR_SET)
             .build_v1()
             .with_context(|| "could not configure grpc reflection service")?));

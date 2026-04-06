@@ -179,9 +179,8 @@ mod arbitrary {
             use proptest::prelude::{Rng, RngCore};
             let rng = runner.rng();
             Ok(if !self.0.is_empty() {
-                proptest::strategy::Just(
-                    *rng.sample(rand::distributions::Slice::new(&self.0).expect("empty vector")),
-                )
+                let idx = rng.random_range(0..self.0.len());
+                proptest::strategy::Just(self.0[idx])
             } else {
                 let mut bytes = [0u8; 32];
                 rng.fill_bytes(&mut bytes);

@@ -179,6 +179,7 @@ checksum = "f7144d30dcf0fafbce74250a3963025d8d52177934239851c917d29f1df280c2"
 [[package]]
 name = "cosmos-sdk-proto"
 version = "0.28.0"
+source = "git+https://github.com/permissionlessweb/cosmos-rust?branch=main#c06a54beac0fbfe8c2b424f801e3089cd2f067ec"
 dependencies = [
  "bytes",
  "http-body-util",
@@ -498,8 +499,8 @@ dependencies = [
  "bytes",
  "cosmos-sdk-proto",
  "flex-error",
- "ics23",
- "informalsystems-pbjson 0.7.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "ics23 0.12.0 (git+https://github.com/permissionlessweb/ics23?branch=stable)",
+ "informalsystems-pbjson 0.7.0 (git+https://github.com/permissionlessweb/pbjson?branch=main)",
  "prost 0.14.3",
  "subtle-encoding",
  "tendermint-proto",
@@ -525,6 +526,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "ics23"
+version = "0.12.0"
+source = "git+https://github.com/permissionlessweb/ics23?branch=stable#310d48268948be7bf4e04e86c68af59ee0f92c69"
+dependencies = [
+ "anyhow",
+ "bytes",
+ "hex",
+ "informalsystems-pbjson 0.7.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "prost 0.14.3",
+ "serde",
+]
+
+[[package]]
 name = "indexmap"
 version = "2.13.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -547,7 +561,7 @@ dependencies = [
 [[package]]
 name = "informalsystems-pbjson"
 version = "0.7.0"
-source = "git+https://github.com/permissionlessweb/pbjson#df9ae64ffc106affccdfec2437365f8498ef306d"
+source = "git+https://github.com/permissionlessweb/pbjson?branch=main#df9ae64ffc106affccdfec2437365f8498ef306d"
 dependencies = [
  "base64 0.21.4",
  "serde",
@@ -556,7 +570,7 @@ dependencies = [
 [[package]]
 name = "informalsystems-pbjson-build"
 version = "0.7.0"
-source = "git+https://github.com/permissionlessweb/pbjson#df9ae64ffc106affccdfec2437365f8498ef306d"
+source = "git+https://github.com/permissionlessweb/pbjson?branch=main#df9ae64ffc106affccdfec2437365f8498ef306d"
 dependencies = [
  "heck 0.4.1",
  "itertools 0.12.1",
@@ -567,11 +581,11 @@ dependencies = [
 [[package]]
 name = "informalsystems-pbjson-types"
 version = "0.7.0"
-source = "git+https://github.com/permissionlessweb/pbjson#df9ae64ffc106affccdfec2437365f8498ef306d"
+source = "git+https://github.com/permissionlessweb/pbjson?branch=main#df9ae64ffc106affccdfec2437365f8498ef306d"
 dependencies = [
  "bytes",
  "chrono",
- "informalsystems-pbjson 0.7.0 (git+https://github.com/permissionlessweb/pbjson)",
+ "informalsystems-pbjson 0.7.0 (git+https://github.com/permissionlessweb/pbjson?branch=main)",
  "informalsystems-pbjson-build",
  "prost 0.14.3",
  "prost-build",
@@ -709,7 +723,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "ibc-proto",
- "ics23",
+ "ics23 0.12.0",
  "informalsystems-pbjson-types",
  "pbjson-build",
  "prost 0.14.3",
@@ -1107,6 +1121,7 @@ dependencies = [
 [[package]]
 name = "tendermint-proto"
 version = "0.40.4"
+source = "git+https://github.com/permissionlessweb/tendermint-rs?branch=main#84af40465b4b393d66f0761d90b2863ff0f7191a"
 dependencies = [
  "bytes",
  "flex-error",

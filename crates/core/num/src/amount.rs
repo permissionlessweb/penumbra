@@ -546,8 +546,8 @@ impl Sum for Amount {
 mod test {
     use crate::Amount;
     use penumbra_sdk_proto::penumbra::core::num::v1 as pb;
-    use rand::RngCore;
-    use rand_core::OsRng;
+
+    use rand_core::{OsRng, RngCore as _};
 
     fn encode_decode(value: u128) -> u128 {
         let amount = Amount { inner: value };

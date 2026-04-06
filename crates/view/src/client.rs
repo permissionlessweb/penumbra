@@ -356,7 +356,7 @@ pub trait ViewClient {
 // it should be fine.
 impl<T> ViewClient for ViewServiceClient<T>
 where
-    T: tonic::client::GrpcService<tonic::body::BoxBody> + Clone + Send + 'static,
+    T: tonic::client::GrpcService<tonic::body::Body> + Clone + Send + 'static,
     T::ResponseBody: tonic::codegen::Body<Data = Bytes> + Send + 'static,
     T::Error: Into<tonic::codegen::StdError>,
     T::Future: Send + 'static,
@@ -485,7 +485,7 @@ where
     > {
         let mut self2 = self.clone();
         async move {
-            let req = self2.notes_for_voting(tonic::Request::new(request));
+            let req = self2.notes_for_voting(request);
             let pb_notes: Vec<_> = req.await?.into_inner().try_collect().await?;
 
             pb_notes

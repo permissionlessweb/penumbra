@@ -45,7 +45,7 @@ pub mod signature_descriptor {
     /// Nested message and enum types in `Data`.
     pub mod data {
         /// Single is the signature data for a single signer
-        #[derive(Clone, PartialEq, ::prost::Message)]
+        #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
         pub struct Single {
             /// mode is the signing mode of the single signer
             #[prost(enumeration = "super::super::SignMode", tag = "1")]

@@ -68,7 +68,7 @@ impl ::prost::Name for AuthorizeValidatorDefinitionRequest {
         "/penumbra.custody.v1.AuthorizeValidatorDefinitionRequest".into()
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct AuthorizeValidatorDefinitionResponse {
     /// The authorization signature for the validator definition.
     #[prost(message, optional, tag = "1")]
@@ -112,7 +112,7 @@ impl ::prost::Name for AuthorizeValidatorVoteRequest {
         "/penumbra.custody.v1.AuthorizeValidatorVoteRequest".into()
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct AuthorizeValidatorVoteResponse {
     /// The authorization signature for the validator vote.
     #[prost(message, optional, tag = "1")]
@@ -134,7 +134,7 @@ impl ::prost::Name for AuthorizeValidatorVoteResponse {
 /// signing authority to other authorization mechanisms.  Details of how a
 /// custodian manages those keys are out-of-scope for the custody protocol and
 /// are custodian-specific.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct PreAuthorization {
     #[prost(oneof = "pre_authorization::PreAuthorization", tags = "1")]
     pub pre_authorization: ::core::option::Option<pre_authorization::PreAuthorization>,
@@ -143,7 +143,7 @@ pub struct PreAuthorization {
 pub mod pre_authorization {
     /// An Ed25519-based preauthorization, containing an Ed25519 signature over the
     /// `TransactionPlan`.
-    #[derive(Clone, PartialEq, ::prost::Message)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct Ed25519 {
         /// The Ed25519 verification key used to verify the signature.
         #[prost(bytes = "vec", tag = "1")]
@@ -162,7 +162,7 @@ pub mod pre_authorization {
             "/penumbra.custody.v1.PreAuthorization.Ed25519".into()
         }
     }
-    #[derive(Clone, PartialEq, ::prost::Oneof)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Oneof)]
     pub enum PreAuthorization {
         #[prost(message, tag = "1")]
         Ed25519(Ed25519),
@@ -178,7 +178,7 @@ impl ::prost::Name for PreAuthorization {
         "/penumbra.custody.v1.PreAuthorization".into()
     }
 }
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ExportFullViewingKeyRequest {}
 impl ::prost::Name for ExportFullViewingKeyRequest {
     const NAME: &'static str = "ExportFullViewingKeyRequest";
@@ -190,7 +190,7 @@ impl ::prost::Name for ExportFullViewingKeyRequest {
         "/penumbra.custody.v1.ExportFullViewingKeyRequest".into()
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ExportFullViewingKeyResponse {
     /// The full viewing key.
     #[prost(message, optional, tag = "1")]
@@ -208,7 +208,7 @@ impl ::prost::Name for ExportFullViewingKeyResponse {
         "/penumbra.custody.v1.ExportFullViewingKeyResponse".into()
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ConfirmAddressRequest {
     #[prost(message, optional, tag = "1")]
     pub address_index: ::core::option::Option<
@@ -225,7 +225,7 @@ impl ::prost::Name for ConfirmAddressRequest {
         "/penumbra.custody.v1.ConfirmAddressRequest".into()
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ConfirmAddressResponse {
     #[prost(message, optional, tag = "1")]
     pub address: ::core::option::Option<super::super::core::keys::v1::Address>,
@@ -280,7 +280,7 @@ pub mod custody_service_client {
     }
     impl<T> CustodyServiceClient<T>
     where
-        T: tonic::client::GrpcService<tonic::body::BoxBody>,
+        T: tonic::client::GrpcService<tonic::body::Body>,
         T::Error: Into<StdError>,
         T::ResponseBody: Body<Data = Bytes> + std::marker::Send + 'static,
         <T::ResponseBody as Body>::Error: Into<StdError> + std::marker::Send,
@@ -301,13 +301,13 @@ pub mod custody_service_client {
             F: tonic::service::Interceptor,
             T::ResponseBody: Default,
             T: tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
+                http::Request<tonic::body::Body>,
                 Response = http::Response<
-                    <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
+                    <T as tonic::client::GrpcService<tonic::body::Body>>::ResponseBody,
                 >,
             >,
             <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
+                http::Request<tonic::body::Body>,
             >>::Error: Into<StdError> + std::marker::Send + std::marker::Sync,
         {
             CustodyServiceClient::new(InterceptedService::new(inner, interceptor))
@@ -359,7 +359,7 @@ pub mod custody_service_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/penumbra.custody.v1.CustodyService/Authorize",
             );
@@ -386,7 +386,7 @@ pub mod custody_service_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/penumbra.custody.v1.CustodyService/AuthorizeValidatorDefinition",
             );
@@ -416,7 +416,7 @@ pub mod custody_service_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/penumbra.custody.v1.CustodyService/AuthorizeValidatorVote",
             );
@@ -449,7 +449,7 @@ pub mod custody_service_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/penumbra.custody.v1.CustodyService/ExportFullViewingKey",
             );
@@ -484,7 +484,7 @@ pub mod custody_service_client {
                         format!("Service was not ready: {}", e.into()),
                     )
                 })?;
-            let codec = tonic::codec::ProstCodec::default();
+            let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/penumbra.custody.v1.CustodyService/ConfirmAddress",
             );
@@ -639,7 +639,7 @@ pub mod custody_service_server {
         B: Body + std::marker::Send + 'static,
         B::Error: Into<StdError> + std::marker::Send + 'static,
     {
-        type Response = http::Response<tonic::body::BoxBody>;
+        type Response = http::Response<tonic::body::Body>;
         type Error = std::convert::Infallible;
         type Future = BoxFuture<Self::Response, Self::Error>;
         fn poll_ready(
@@ -680,7 +680,7 @@ pub mod custody_service_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = AuthorizeSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -734,7 +734,7 @@ pub mod custody_service_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = AuthorizeValidatorDefinitionSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -783,7 +783,7 @@ pub mod custody_service_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = AuthorizeValidatorVoteSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -832,7 +832,7 @@ pub mod custody_service_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = ExportFullViewingKeySvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -878,7 +878,7 @@ pub mod custody_service_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = ConfirmAddressSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
+                        let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
                                 accept_compression_encodings,
@@ -895,7 +895,9 @@ pub mod custody_service_server {
                 }
                 _ => {
                     Box::pin(async move {
-                        let mut response = http::Response::new(empty_body());
+                        let mut response = http::Response::new(
+                            tonic::body::Body::default(),
+                        );
                         let headers = response.headers_mut();
                         headers
                             .insert(

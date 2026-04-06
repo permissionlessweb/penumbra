@@ -34,7 +34,7 @@ impl ::prost::Name for ModuleDescriptor {
     }
 }
 /// PackageReference is a reference to a protobuf package used by a module.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct PackageReference {
     /// name is the fully-qualified name of the package.
     #[prost(string, tag = "1")]
@@ -90,7 +90,7 @@ impl ::prost::Name for PackageReference {
 }
 /// MigrateFromInfo is information on a module version that a newer module
 /// can migrate from.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct MigrateFromInfo {
     /// module is the fully-qualified protobuf name of the module config object
     /// for the previous module version, ex: "cosmos.group.module.v1.Module".

@@ -1,5 +1,29 @@
 use std::path::PathBuf;
 
+/// Remove `Eq, Hash` from specific struct derives where extern field types
+/// (e.g. ibc_proto::Height) don't implement Hash.
+fn fixup_derives(dir: &std::path::Path) -> anyhow::Result<()> {
+    let patches: &[(&str, &str)] = &[
+        ("penumbra.core.component.ibc.v1.rs", "Ics20Withdrawal"),
+    ];
+    for &(file, struct_name) in patches {
+        let path = dir.join(file);
+        if !path.exists() { continue; }
+        let src = std::fs::read_to_string(&path)?;
+        let from = format!(
+            "#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]\npub struct {struct_name} {{"
+        );
+        let to = format!(
+            "#[derive(Clone, PartialEq, ::prost::Message)]\npub struct {struct_name} {{"
+        );
+        let patched = src.replace(&from, &to);
+        if patched != src {
+            std::fs::write(&path, patched)?;
+        }
+    }
+    Ok(())
+}
+
 fn main() -> anyhow::Result<()> {
     let root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     println!("root: {}", root.display());
@@ -116,6 +140,8 @@ fn main() -> anyhow::Result<()> {
             ".penumbra.util.tendermint_proxy.v1.GetStatusResponse".to_owned(),
         ])
         .build(&[".penumbra"])?;
+
+    fixup_derives(&target_dir)?;
 
     Ok(())
 }

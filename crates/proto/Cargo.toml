@@ -11,15 +11,16 @@ edition = {workspace = true}
 anyhow = "1"
 
 [features]
-rpc = ["dep:tonic", "ibc-proto/client"]
-box-grpc = ["dep:http-body", "dep:http-body-util", "dep:tonic", "dep:tower"]
+tonic = [ "dep:tonic","dep:tonic-prost"] 
+rpc = ["tonic", "ibc-proto/client"]
+box-grpc = ["dep:http-body", "dep:http-body-util", "tonic", "dep:tower"]
 cnidarium = ["dep:cnidarium"]
 tendermint = [
     "dep:chrono",
     "dep:tendermint-proto",
     "dep:tendermint-rpc",
     "dep:thiserror",
-    "dep:tonic",
+    "tonic",
 ]
 
 [dependencies]
@@ -49,6 +50,7 @@ tendermint-proto = {workspace = true, optional = true}
 tendermint-rpc = {workspace = true, optional = true, features = ["http-client"]}
 thiserror = {workspace = true, optional = true}
 tonic = {workspace = true, optional = true}
+tonic-prost = {workspace = true, optional = true}
 tower = {workspace = true, features = ["full"], optional = true}
 tracing = {workspace = true}
 

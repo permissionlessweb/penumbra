@@ -18,7 +18,7 @@ impl ::prost::Name for ValidatorSet {
         "/tendermint.types.ValidatorSet".into()
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct Validator {
     #[prost(bytes = "vec", tag = "1")]
     pub address: ::prost::alloc::vec::Vec<u8>,
@@ -39,7 +39,7 @@ impl ::prost::Name for Validator {
         "/tendermint.types.Validator".into()
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct SimpleValidator {
     #[prost(message, optional, tag = "1")]
     pub pub_key: ::core::option::Option<super::crypto::PublicKey>,
@@ -57,7 +57,7 @@ impl ::prost::Name for SimpleValidator {
     }
 }
 /// PartsetHeader
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct PartSetHeader {
     #[prost(uint32, tag = "1")]
     pub total: u32,
@@ -74,7 +74,7 @@ impl ::prost::Name for PartSetHeader {
         "/tendermint.types.PartSetHeader".into()
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct Part {
     #[prost(uint32, tag = "1")]
     pub index: u32,
@@ -94,7 +94,7 @@ impl ::prost::Name for Part {
     }
 }
 /// BlockID
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct BlockId {
     #[prost(bytes = "vec", tag = "1")]
     pub hash: ::prost::alloc::vec::Vec<u8>,
@@ -112,7 +112,7 @@ impl ::prost::Name for BlockId {
     }
 }
 /// Header defines the structure of a block header.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct Header {
     /// basic block info
     #[prost(message, optional, tag = "1")]
@@ -171,7 +171,7 @@ impl ::prost::Name for Header {
     }
 }
 /// Data contains the set of transactions included in the block
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct Data {
     /// Txs that will be applied by state @ block.Height+1.
     /// NOTE: not all txs here are valid.  We're just agreeing on the order first.
@@ -191,7 +191,7 @@ impl ::prost::Name for Data {
 }
 /// Vote represents a prevote, precommit, or commit vote from validators for
 /// consensus.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct Vote {
     #[prost(enumeration = "SignedMsgType", tag = "1")]
     pub r#type: i32,
@@ -244,7 +244,7 @@ impl ::prost::Name for Commit {
     }
 }
 /// CommitSig is a part of the Vote included in a Commit.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CommitSig {
     #[prost(enumeration = "BlockIdFlag", tag = "1")]
     pub block_id_flag: i32,
@@ -265,7 +265,7 @@ impl ::prost::Name for CommitSig {
         "/tendermint.types.CommitSig".into()
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct Proposal {
     #[prost(enumeration = "SignedMsgType", tag = "1")]
     pub r#type: i32,
@@ -326,7 +326,7 @@ impl ::prost::Name for LightBlock {
         "/tendermint.types.LightBlock".into()
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct BlockMeta {
     #[prost(message, optional, tag = "1")]
     pub block_id: ::core::option::Option<BlockId>,
@@ -348,7 +348,7 @@ impl ::prost::Name for BlockMeta {
     }
 }
 /// TxProof represents a Merkle proof of the presence of a transaction in the Merkle tree.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct TxProof {
     #[prost(bytes = "vec", tag = "1")]
     pub root_hash: ::prost::alloc::vec::Vec<u8>,
@@ -461,7 +461,7 @@ impl ::prost::Name for Evidence {
     }
 }
 /// DuplicateVoteEvidence contains evidence of a validator signed two conflicting votes.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct DuplicateVoteEvidence {
     #[prost(message, optional, tag = "1")]
     pub vote_a: ::core::option::Option<Vote>,
@@ -546,7 +546,7 @@ impl ::prost::Name for Block {
 }
 /// ConsensusParams contains consensus critical parameters that determine the
 /// validity of blocks.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ConsensusParams {
     #[prost(message, optional, tag = "1")]
     pub block: ::core::option::Option<BlockParams>,
@@ -568,7 +568,7 @@ impl ::prost::Name for ConsensusParams {
     }
 }
 /// BlockParams contains limits on the block size.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct BlockParams {
     /// Max block size, in bytes.
     /// Note: must be greater than 0
@@ -590,7 +590,7 @@ impl ::prost::Name for BlockParams {
     }
 }
 /// EvidenceParams determine how we handle evidence of malfeasance.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct EvidenceParams {
     /// Max age of evidence, in blocks.
     ///
@@ -623,7 +623,7 @@ impl ::prost::Name for EvidenceParams {
 }
 /// ValidatorParams restrict the public key types validators can use.
 /// NOTE: uses ABCI pubkey naming, not Amino names.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ValidatorParams {
     #[prost(string, repeated, tag = "1")]
     pub pub_key_types: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
@@ -639,7 +639,7 @@ impl ::prost::Name for ValidatorParams {
     }
 }
 /// VersionParams contains the ABCI application version.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct VersionParams {
     #[prost(uint64, tag = "1")]
     pub app: u64,
@@ -657,7 +657,7 @@ impl ::prost::Name for VersionParams {
 /// HashedParams is a subset of ConsensusParams.
 ///
 /// It is hashed into the Header.ConsensusHash.
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct HashedParams {
     #[prost(int64, tag = "1")]
     pub block_max_bytes: i64,
