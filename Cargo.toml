@@ -194,8 +194,8 @@ pin-project-lite                 = { version = "0.2.9" }
 poseidon377                      = { version = "1.2.0" }
 proptest                         = { version = "1.6" }
 proptest-derive                  = { version = "0.5.1" }
-prost-types                      = { version = "0.13.4" }
-prost                            = { version = "0.13.4" }
+prost-types                      = { version = "0.14.1" }
+prost                            = { version = "0.14.1" }
 r2d2                             = { version = "0.8" }
 r2d2_sqlite                      = { version = "0.25" }
 rand                             = { version = "0.8.5" }

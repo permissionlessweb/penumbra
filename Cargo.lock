@@ -1374,7 +1374,7 @@ dependencies = [
  "ibc-proto",
  "ibc-types",
  "ics23 0.12.0 (git+https://github.com/permissionlessweb/ics23?branch=stable)",
- "jmt",
+ "jmt 0.12.0 (git+https://github.com/penumbra-zone/jmt?branch=main)",
  "metrics",
  "once_cell",
  "parking_lot",
@@ -1455,7 +1455,7 @@ dependencies = [
  "clap",
  "futures",
  "hex",
- "prost 0.13.5",
+ "prost 0.14.3",
  "serde_json",
  "sqlx",
  "tap",
@@ -1583,7 +1583,7 @@ checksum = "773648b94d0e5d620f64f280777445740e61fe701025087ec8b57f45c791888b"
 [[package]]
 name = "cosmos-sdk-proto"
 version = "0.28.0"
-source = "git+https://github.com/permissionlessweb/cosmos-rust?branch=main#2017200e4180dec8ed19fdc0cd633279d6b3c6f9"
+source = "git+https://github.com/permissionlessweb/cosmos-rust?branch=main#c06a54beac0fbfe8c2b424f801e3089cd2f067ec"
 dependencies = [
  "bytes",
  "http-body-util",
@@ -4045,6 +4045,27 @@ dependencies = [
 ]
 
 [[package]]
+name = "jmt"
+version = "0.12.0"
+source = "git+https://github.com/permissionlessweb/jmt?branch=main#fc83eb8cdb350861ca67b4ab5f86ba5fd24910fd"
+dependencies = [
+ "anyhow",
+ "borsh",
+ "digest 0.10.7",
+ "hashbrown 0.13.2",
+ "hex",
+ "ics23 0.12.0 (git+https://github.com/permissionlessweb/ics23?branch=stable)",
+ "itertools 0.10.5",
+ "mirai-annotations",
+ "num-derive 0.4.2",
+ "num-traits",
+ "serde",
+ "sha2 0.10.9",
+ "thiserror 1.0.69",
+ "tracing",
+]
+
+[[package]]
 name = "jni"
 version = "0.19.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4314,9 +4335,9 @@ dependencies = [
 
 [[package]]
 name = "libz-sys"
-version = "1.1.27"
+version = "1.1.28"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3884c0d1cee1f72141b54543005490614e7f96890d10c99a238a54cbd0e43d81"
+checksum = "fc3a226e576f50782b3305c5ccf458698f92798987f551c6a02efe8276721e22"
 dependencies = [
  "cc",
  "pkg-config",
@@ -5095,7 +5116,7 @@ dependencies = [
  "ibc-types",
  "indicatif",
  "informalsystems-pbjson-types",
- "jmt",
+ "jmt 0.12.0 (git+https://github.com/permissionlessweb/jmt?branch=main)",
  "ndarray",
  "once_cell",
  "penumbra-sdk-app",
@@ -5179,7 +5200,7 @@ dependencies = [
  "penumbra-sdk-tct",
  "penumbra-sdk-transaction",
  "penumbra-sdk-view",
- "prost 0.13.5",
+ "prost 0.14.3",
  "rand 0.8.5",
  "rand_core 0.6.4",
  "reqwest 0.12.28",
@@ -5235,7 +5256,7 @@ dependencies = [
  "ibc-types",
  "ics23 0.12.0 (git+https://github.com/permissionlessweb/ics23?branch=stable)",
  "informalsystems-pbjson-types",
- "jmt",
+ "jmt 0.12.0 (git+https://github.com/permissionlessweb/jmt?branch=main)",
  "metrics",
  "metrics-exporter-prometheus",
  "metrics-process",
@@ -5267,9 +5288,9 @@ dependencies = [
  "pin-project",
  "pin-project-lite",
  "predicates 2.1.5",
- "prost 0.13.5",
+ "prost 0.14.3",
  "prost-reflect",
- "prost-types 0.13.5",
+ "prost-types 0.14.3",
  "rand 0.8.5",
  "rand_chacha 0.3.1",
  "rand_core 0.6.4",
@@ -5384,7 +5405,7 @@ dependencies = [
  "ibc-types",
  "ics23 0.12.0 (git+https://github.com/permissionlessweb/ics23?branch=stable)",
  "im",
- "jmt",
+ "jmt 0.12.0 (git+https://github.com/permissionlessweb/jmt?branch=main)",
  "metrics",
  "once_cell",
  "parking_lot",
@@ -5409,7 +5430,7 @@ dependencies = [
  "penumbra-sdk-tower-trace",
  "penumbra-sdk-transaction",
  "penumbra-sdk-txhash",
- "prost 0.13.5",
+ "prost 0.14.3",
  "rand 0.8.5",
  "rand_chacha 0.3.1",
  "rand_core 0.6.4",
@@ -5467,7 +5488,7 @@ dependencies = [
  "ibc-types",
  "ics23 0.12.0 (git+https://github.com/permissionlessweb/ics23?branch=stable)",
  "im",
- "jmt",
+ "jmt 0.12.0 (git+https://github.com/permissionlessweb/jmt?branch=main)",
  "metrics",
  "once_cell",
  "parking_lot",
@@ -5499,7 +5520,7 @@ dependencies = [
  "penumbra-sdk-txhash",
  "penumbra-sdk-view",
  "penumbra-sdk-wallet",
- "prost 0.13.5",
+ "prost 0.14.3",
  "rand 0.8.5",
  "rand_chacha 0.3.1",
  "rand_core 0.6.4",
@@ -5610,8 +5631,8 @@ dependencies = [
  "penumbra-sdk-tct",
  "penumbra-sdk-txhash",
  "proptest",
- "prost 0.13.5",
- "prost-types 0.13.5",
+ "prost 0.14.3",
+ "prost-types 0.14.3",
  "rand_chacha 0.3.1",
  "rand_core 0.6.4",
  "regex",
@@ -5706,7 +5727,7 @@ dependencies = [
  "penumbra-sdk-sct",
  "penumbra-sdk-shielded-pool",
  "penumbra-sdk-txhash",
- "prost 0.13.5",
+ "prost 0.14.3",
  "serde",
  "sha2 0.10.9",
  "tendermint 0.40.4 (git+https://github.com/permissionlessweb/tendermint-rs?branch=main)",
@@ -5776,7 +5797,7 @@ dependencies = [
  "penumbra-sdk-stake",
  "penumbra-sdk-transaction",
  "penumbra-sdk-txhash",
- "prost 0.13.5",
+ "prost 0.14.3",
  "rand_core 0.6.4",
  "serde",
  "serde_json",
@@ -5848,7 +5869,7 @@ dependencies = [
  "penumbra-sdk-txhash",
  "poseidon377",
  "proptest",
- "prost 0.13.5",
+ "prost 0.14.3",
  "rand 0.8.5",
  "rand_chacha 0.3.1",
  "rand_core 0.6.4",
@@ -6045,7 +6066,7 @@ dependencies = [
  "penumbra-sdk-proto",
  "penumbra-sdk-sct",
  "penumbra-sdk-txhash",
- "prost 0.13.5",
+ "prost 0.14.3",
  "regex",
  "serde",
  "serde_json",
@@ -6153,7 +6174,7 @@ dependencies = [
  "bytes",
  "ed25519-consensus",
  "hex",
- "prost 0.13.5",
+ "prost 0.14.3",
  "rand_core 0.6.4",
  "serde",
  "serde_json",
@@ -6311,7 +6332,7 @@ dependencies = [
  "informalsystems-pbjson 0.7.0 (git+https://github.com/permissionlessweb/pbjson?branch=main)",
  "informalsystems-pbjson-types",
  "pin-project",
- "prost 0.13.5",
+ "prost 0.14.3",
  "serde",
  "serde_json",
  "subtle-encoding",
@@ -6402,7 +6423,7 @@ dependencies = [
  "penumbra-sdk-txhash",
  "poseidon377",
  "proptest",
- "prost 0.13.5",
+ "prost 0.14.3",
  "rand 0.8.5",
  "rand_core 0.6.4",
  "regex",
@@ -6528,7 +6549,7 @@ dependencies = [
  "include-flate",
  "parking_lot",
  "penumbra-sdk-tct",
- "prost 0.13.5",
+ "prost 0.14.3",
  "rand 0.8.5",
  "rand_chacha 0.3.1",
  "rand_distr",
@@ -6714,7 +6735,7 @@ dependencies = [
  "penumbra-sdk-stake",
  "penumbra-sdk-tct",
  "penumbra-sdk-transaction",
- "prost 0.13.5",
+ "prost 0.14.3",
  "r2d2",
  "r2d2_sqlite",
  "rand 0.8.5",
@@ -6855,7 +6876,7 @@ dependencies = [
  "penumbra-sdk-stake",
  "penumbra-sdk-transaction",
  "predicates 2.1.5",
- "prost 0.13.5",
+ "prost 0.14.3",
  "prost-reflect",
  "reqwest 0.12.28",
  "rstest",
@@ -7322,7 +7343,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "343d3bd7056eda839b03204e68deff7d1b13aba7af2b2fd16890697274262ee7"
 dependencies = [
  "heck 0.5.0",
- "itertools 0.14.0",
+ "itertools 0.10.5",
  "log",
  "multimap",
  "petgraph",
@@ -7354,7 +7375,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8a56d757972c98b346a9b766e3f02746cde6dd1cd1d1d563472929fdd74bec4d"
 dependencies = [
  "anyhow",
- "itertools 0.14.0",
+ "itertools 0.10.5",
  "proc-macro2 1.0.106",
  "quote",
  "syn 2.0.117",
@@ -7367,7 +7388,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "27c6023962132f4b30eb4c172c91ce92d933da334c59c23cddee82358ddafb0b"
 dependencies = [
  "anyhow",
- "itertools 0.14.0",
+ "itertools 0.10.5",
  "proc-macro2 1.0.106",
  "quote",
  "syn 2.0.117",
