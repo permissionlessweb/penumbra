@@ -122,7 +122,7 @@ camino                           = { version = "1" }
 chacha20poly1305                 = { version = "0.9.0" }
 chrono                           = { default-features = false, version = "0.4" }
 clap                             = { version = "3.2" }
-cnidarium = { path = "../cnidarium" }
+cnidarium = { git = "https://github.com/permissionlessweb/cnidarium", branch = "zk-mvp" }
 cnidarium-component              = { default-features = false, version = "2.1.1", path = "crates/cnidarium-component" }
 cometindex                       = { version = "2.1.1", path = "crates/util/cometindex" }
 criterion                        = { version = "0.8.2" }
@@ -140,13 +140,13 @@ http                             = { version = "1.2.0" }
 http-body                        = { version = "1.0.1" }
 http-body-util                   = { version = "0.1.2" }
 humantime                        = { version = "2.1" }
-ibc-proto = { path = "../ibc-proto-rs" }
-ibc-types = { path = "../ibc-types/crates/ibc-types" }
+ibc-proto = { git = "https://github.com/permissionlessweb/ibc-proto-rs", branch = "zk-mvp" }
+ibc-types = { git = "https://github.com/permissionlessweb/ibc-types", branch = "zk-mvp" }
 ibig                             = { version = "0.3" }
-ics23 = { path = "../ics23/rust" }
+ics23 = { git = "https://github.com/permissionlessweb/ics23", branch = "zk-mvp" }
 im                               = { version = "^15.1.0" }
 indicatif                        = { version = "0.18.4" }
-jmt = { path = "../jmt" }
+jmt = { git = "https://github.com/permissionlessweb/jmt", branch = "zk-mvp" }
 ledger-lib = { git = "https://github.com/ledger-community/rust-ledger", rev = "510bb3ca30639af4bdb12a918b6bbbdb75fa5f52" }
 ledger-proto = { git = "https://github.com/ledger-community/rust-ledger", rev = "510bb3ca30639af4bdb12a918b6bbbdb75fa5f52" }
 metrics                          = { version = "0.24.1" }
@@ -156,8 +156,8 @@ num-bigint                       = { version = "0.4" }
 num-traits                       = { default-features = false, version = "0.2.15" }
 once_cell                        = { version = "1.8" }
 parking_lot                      = { version = "0.12.1" }
-pbjson = { package = "informalsystems-pbjson", path = "../pbjson/pbjson" }
-pbjson-types = { package = "informalsystems-pbjson-types", path = "../pbjson/pbjson-types" }
+pbjson = { package = "informalsystems-pbjson", git = "https://github.com/permissionlessweb/pbjson", branch = "zk-mvp" }
+pbjson-types = { package = "informalsystems-pbjson-types", git = "https://github.com/permissionlessweb/pbjson", branch = "zk-mvp" }
 penumbra-sdk-app                     = { default-features = false, version = "2.1.1", path = "crates/core/app" }
 penumbra-sdk-asset                   = { default-features = false, version = "2.1.1", path = "crates/core/asset" }
 penumbra-sdk-community-pool          = { default-features = false, version = "2.1.1", path = "crates/core/component/community-pool" }
@@ -215,11 +215,11 @@ sha2                             = { version = "0.10" }
 sqlx                             = { version = "0.8", features = ["bigdecimal", "postgres", "runtime-tokio", "tls-rustls"] }
 tap                              = "1.0.1"
 tempfile                         = { version = "3.3.0" }
-tendermint = { path = "../tendermint-rs/tendermint" }
-tendermint-config = { path = "../tendermint-rs/config" }
-tendermint-light-client-verifier = { path = "../tendermint-rs/light-client-verifier" }
-tendermint-proto = { path = "../tendermint-rs/proto" }
-tendermint-rpc = { path = "../tendermint-rs/rpc" }
+tendermint = { git = "https://github.com/permissionlessweb/tendermint-rs", branch = "zk-mvp" }
+tendermint-config = { git = "https://github.com/permissionlessweb/tendermint-rs", branch = "zk-mvp" }
+tendermint-light-client-verifier = { git = "https://github.com/permissionlessweb/tendermint-rs", branch = "zk-mvp" }
+tendermint-proto = { git = "https://github.com/permissionlessweb/tendermint-rs", branch = "zk-mvp" }
+tendermint-rpc = { git = "https://github.com/permissionlessweb/tendermint-rs", branch = "zk-mvp" }
 termion                          = { version = "3" }
 thiserror                        = { version = "1.0" }
 time                             = { version = "0.3" }
@@ -232,7 +232,7 @@ tonic-reflection                 = { version = "0.14" }
 tonic-web                        = { version = "0.14" }
 tonic-prost                      = { version = "0.14" }
 tower                            = { version = "0.4.0" }
-tower-abci = { path = "../tower-abci" }
+tower-abci = { git = "https://github.com/permissionlessweb/tower-abci", branch = "zk-mvp" }
 tower-http                       = { version = "0.6.2" }
 tower-service                    = { version = "0.3.2" }
 tracing                          = { version = "0.1" }
