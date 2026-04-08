@@ -13,10 +13,10 @@ version = "0.1.0"
 
 [dependencies]
 anyhow = "1"
-ibc-proto                        = { path = "../../../ibc-proto-rs" }
-ics23                            = { path = "../../../ics23/rust" }
+ibc-proto = { path = "../../../ibc-proto-rs" }
+ics23 = { path = "../../../ics23/rust" }
 pbjson-build                     = "0.7.0"
-pbjson-types                     = { git = "https://github.com/permissionlessweb/pbjson", package = "informalsystems-pbjson-types", branch = "main" }
+pbjson-types = { package = "informalsystems-pbjson-types", path = "../../../pbjson/pbjson-types" }
 prost = "0.14"
 prost-build = "0.14"
 prost-types = "0.14"
