@@ -1350,7 +1350,7 @@ dependencies = [
 [[package]]
 name = "cnidarium"
 version = "0.84.0"
-source = "git+https://github.com/permissionlessweb/cnidarium?branch=main#8df48e90ba75bb61dcb5c5abec790154ad526755"
+source = "git+https://github.com/permissionlessweb/cnidarium?branch=zk-mvp#3dc7bd2899557f44f6b0d63f58e09fd89f5b87a9"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -1358,10 +1358,10 @@ dependencies = [
  "borsh",
  "futures",
  "hex",
- "ibc-proto 0.52.0 (git+https://github.com/permissionlessweb/ibc-proto-rs?branch=main)",
+ "ibc-proto",
  "ibc-types",
- "ics23 0.12.0 (git+https://github.com/permissionlessweb/ics23?branch=stable)",
- "jmt 0.12.0 (git+https://github.com/permissionlessweb/jmt?branch=main)",
+ "ics23",
+ "jmt",
  "metrics",
  "once_cell",
  "parking_lot",
@@ -1374,7 +1374,7 @@ dependencies = [
  "sha2 0.10.9",
  "smallvec",
  "tempfile",
- "tendermint 0.40.4 (git+https://github.com/permissionlessweb/tendermint-rs?branch=main)",
+ "tendermint",
  "tokio",
  "tokio-stream",
  "tonic",
@@ -1390,7 +1390,7 @@ dependencies = [
  "async-trait",
  "cnidarium",
  "hex",
- "tendermint 0.40.4",
+ "tendermint",
 ]
 
 [[package]]
@@ -1446,8 +1446,8 @@ dependencies = [
  "serde_json",
  "sqlx",
  "tap",
- "tendermint 0.40.4",
- "tendermint-proto 0.40.4",
+ "tendermint",
+ "tendermint-proto",
  "tokio",
  "tracing",
  "tracing-subscriber 0.3.23",
@@ -1572,28 +1572,16 @@ checksum = "773648b94d0e5d620f64f280777445740e61fe701025087ec8b57f45c791888b"
 [[package]]
 name = "cosmos-sdk-proto"
 version = "0.28.0"
+source = "git+https://github.com/permissionlessweb/cosmos-rust?branch=zk-mvp#f06b0cd8b4d6f71985203050124d3de89e427aca"
 dependencies = [
  "bytes",
  "http-body-util",
- "informalsystems-pbjson 0.7.0",
+ "informalsystems-pbjson",
  "prost 0.14.3",
  "serde",
- "tendermint-proto 0.40.4",
+ "tendermint-proto",
  "tonic",
  "tonic-prost",
-]
-
-[[package]]
-name = "cosmos-sdk-proto"
-version = "0.28.0"
-source = "git+https://github.com/permissionlessweb/cosmos-rust?branch=main#51a9e50dda277801d3abd7ff0d332d37fbc25a91"
-dependencies = [
- "bytes",
- "http-body-util",
- "informalsystems-pbjson 0.7.0 (git+https://github.com/permissionlessweb/pbjson?branch=main)",
- "prost 0.14.3",
- "serde",
- "tendermint-proto 0.40.4 (git+https://github.com/permissionlessweb/tendermint-rs?branch=main)",
 ]
 
 [[package]]
@@ -3360,43 +3348,26 @@ dependencies = [
 [[package]]
 name = "ibc-proto"
 version = "0.52.0"
+source = "git+https://github.com/permissionlessweb/ibc-proto-rs?branch=zk-mvp#dbef678730b1c920515c3728addcffc657c94b3d"
 dependencies = [
  "base64 0.22.1",
  "bytes",
- "cosmos-sdk-proto 0.28.0",
+ "cosmos-sdk-proto",
  "flex-error",
- "ics23 0.12.0",
- "informalsystems-pbjson 0.7.0",
+ "ics23",
+ "informalsystems-pbjson",
  "prost 0.14.3",
  "serde",
  "subtle-encoding",
- "tendermint-proto 0.40.4",
+ "tendermint-proto",
  "tonic",
- "tonic-prost",
-]
-
-[[package]]
-name = "ibc-proto"
-version = "0.52.0"
-source = "git+https://github.com/permissionlessweb/ibc-proto-rs?branch=main#675ef5696991d4ea259ad74a7501e3a091b9968b"
-dependencies = [
- "base64 0.22.1",
- "bytes",
- "cosmos-sdk-proto 0.28.0 (git+https://github.com/permissionlessweb/cosmos-rust?branch=main)",
- "flex-error",
- "ics23 0.12.0 (git+https://github.com/permissionlessweb/ics23?branch=stable)",
- "informalsystems-pbjson 0.7.0 (git+https://github.com/permissionlessweb/pbjson?branch=main)",
- "prost 0.14.3",
- "serde",
- "subtle-encoding",
- "tendermint-proto 0.40.4 (git+https://github.com/permissionlessweb/tendermint-rs?branch=main)",
  "tonic-prost",
 ]
 
 [[package]]
 name = "ibc-types"
 version = "0.16.0"
-source = "git+https://github.com/permissionlessweb/ibc-types?branch=main#f51ebc33a752322992203f6236a277511059c7b3"
+source = "git+https://github.com/permissionlessweb/ibc-types?branch=zk-mvp#bddd4113d0b43477089e22db27ecd20b853171c2"
 dependencies = [
  "ibc-types-core-channel",
  "ibc-types-core-client",
@@ -3413,20 +3384,20 @@ dependencies = [
 [[package]]
 name = "ibc-types-core-channel"
 version = "0.16.0"
-source = "git+https://github.com/permissionlessweb/ibc-types?branch=main#f51ebc33a752322992203f6236a277511059c7b3"
+source = "git+https://github.com/permissionlessweb/ibc-types?branch=zk-mvp#bddd4113d0b43477089e22db27ecd20b853171c2"
 dependencies = [
  "anyhow",
  "bytes",
  "derive_more",
  "displaydoc",
- "ibc-proto 0.52.0 (git+https://github.com/permissionlessweb/ibc-proto-rs?branch=main)",
+ "ibc-proto",
  "ibc-types-core-client",
  "ibc-types-core-commitment",
  "ibc-types-core-connection",
  "ibc-types-domain-type",
  "ibc-types-identifier",
  "ibc-types-timestamp",
- "ics23 0.12.0 (git+https://github.com/permissionlessweb/ics23?branch=stable)",
+ "ics23",
  "num-traits",
  "proc-macro2 0.1.10",
  "prost 0.14.3",
@@ -3436,8 +3407,8 @@ dependencies = [
  "serde_json",
  "sha2 0.10.9",
  "subtle-encoding",
- "tendermint 0.40.4 (git+https://github.com/permissionlessweb/tendermint-rs?branch=main)",
- "tendermint-proto 0.40.4 (git+https://github.com/permissionlessweb/tendermint-rs?branch=main)",
+ "tendermint",
+ "tendermint-proto",
  "time",
  "tracing",
 ]
@@ -3445,17 +3416,17 @@ dependencies = [
 [[package]]
 name = "ibc-types-core-client"
 version = "0.16.0"
-source = "git+https://github.com/permissionlessweb/ibc-types?branch=main#f51ebc33a752322992203f6236a277511059c7b3"
+source = "git+https://github.com/permissionlessweb/ibc-types?branch=zk-mvp#bddd4113d0b43477089e22db27ecd20b853171c2"
 dependencies = [
  "anyhow",
  "bytes",
  "derive_more",
  "displaydoc",
- "ibc-proto 0.52.0 (git+https://github.com/permissionlessweb/ibc-proto-rs?branch=main)",
+ "ibc-proto",
  "ibc-types-domain-type",
  "ibc-types-identifier",
  "ibc-types-timestamp",
- "ics23 0.12.0 (git+https://github.com/permissionlessweb/ics23?branch=stable)",
+ "ics23",
  "num-traits",
  "prost 0.14.3",
  "serde",
@@ -3463,15 +3434,15 @@ dependencies = [
  "serde_json",
  "sha2 0.10.9",
  "subtle-encoding",
- "tendermint 0.40.4 (git+https://github.com/permissionlessweb/tendermint-rs?branch=main)",
- "tendermint-proto 0.40.4 (git+https://github.com/permissionlessweb/tendermint-rs?branch=main)",
+ "tendermint",
+ "tendermint-proto",
  "time",
 ]
 
 [[package]]
 name = "ibc-types-core-commitment"
 version = "0.16.0"
-source = "git+https://github.com/permissionlessweb/ibc-types?branch=main#f51ebc33a752322992203f6236a277511059c7b3"
+source = "git+https://github.com/permissionlessweb/ibc-types?branch=zk-mvp#bddd4113d0b43477089e22db27ecd20b853171c2"
 dependencies = [
  "anyhow",
  "bytes",
@@ -3480,11 +3451,11 @@ dependencies = [
  "dyn-clone",
  "erased-serde",
  "hex",
- "ibc-proto 0.52.0 (git+https://github.com/permissionlessweb/ibc-proto-rs?branch=main)",
+ "ibc-proto",
  "ibc-types-domain-type",
  "ibc-types-identifier",
  "ibc-types-timestamp",
- "ics23 0.12.0 (git+https://github.com/permissionlessweb/ics23?branch=stable)",
+ "ics23",
  "num-traits",
  "primitive-types",
  "prost 0.14.3",
@@ -3494,9 +3465,9 @@ dependencies = [
  "serde_json",
  "sha2 0.10.9",
  "subtle-encoding",
- "tendermint 0.40.4 (git+https://github.com/permissionlessweb/tendermint-rs?branch=main)",
+ "tendermint",
  "tendermint-light-client-verifier",
- "tendermint-proto 0.40.4 (git+https://github.com/permissionlessweb/tendermint-rs?branch=main)",
+ "tendermint-proto",
  "time",
  "tracing",
  "uint",
@@ -3505,19 +3476,19 @@ dependencies = [
 [[package]]
 name = "ibc-types-core-connection"
 version = "0.16.0"
-source = "git+https://github.com/permissionlessweb/ibc-types?branch=main#f51ebc33a752322992203f6236a277511059c7b3"
+source = "git+https://github.com/permissionlessweb/ibc-types?branch=zk-mvp#bddd4113d0b43477089e22db27ecd20b853171c2"
 dependencies = [
  "anyhow",
  "bytes",
  "derive_more",
  "displaydoc",
- "ibc-proto 0.52.0 (git+https://github.com/permissionlessweb/ibc-proto-rs?branch=main)",
+ "ibc-proto",
  "ibc-types-core-client",
  "ibc-types-core-commitment",
  "ibc-types-domain-type",
  "ibc-types-identifier",
  "ibc-types-timestamp",
- "ics23 0.12.0 (git+https://github.com/permissionlessweb/ics23?branch=stable)",
+ "ics23",
  "num-traits",
  "prost 0.14.3",
  "safe-regex",
@@ -3526,15 +3497,15 @@ dependencies = [
  "serde_json",
  "sha2 0.10.9",
  "subtle-encoding",
- "tendermint 0.40.4 (git+https://github.com/permissionlessweb/tendermint-rs?branch=main)",
- "tendermint-proto 0.40.4 (git+https://github.com/permissionlessweb/tendermint-rs?branch=main)",
+ "tendermint",
+ "tendermint-proto",
  "time",
 ]
 
 [[package]]
 name = "ibc-types-domain-type"
 version = "0.16.0"
-source = "git+https://github.com/permissionlessweb/ibc-types?branch=main#f51ebc33a752322992203f6236a277511059c7b3"
+source = "git+https://github.com/permissionlessweb/ibc-types?branch=zk-mvp#bddd4113d0b43477089e22db27ecd20b853171c2"
 dependencies = [
  "anyhow",
  "bytes",
@@ -3544,7 +3515,7 @@ dependencies = [
 [[package]]
 name = "ibc-types-identifier"
 version = "0.16.0"
-source = "git+https://github.com/permissionlessweb/ibc-types?branch=main#f51ebc33a752322992203f6236a277511059c7b3"
+source = "git+https://github.com/permissionlessweb/ibc-types?branch=zk-mvp#bddd4113d0b43477089e22db27ecd20b853171c2"
 dependencies = [
  "displaydoc",
  "serde",
@@ -3554,7 +3525,7 @@ dependencies = [
 [[package]]
 name = "ibc-types-lightclients-tendermint"
 version = "0.16.0"
-source = "git+https://github.com/permissionlessweb/ibc-types?branch=main#f51ebc33a752322992203f6236a277511059c7b3"
+source = "git+https://github.com/permissionlessweb/ibc-types?branch=zk-mvp#bddd4113d0b43477089e22db27ecd20b853171c2"
 dependencies = [
  "anyhow",
  "bytes",
@@ -3562,14 +3533,14 @@ dependencies = [
  "displaydoc",
  "dyn-clone",
  "erased-serde",
- "ibc-proto 0.52.0 (git+https://github.com/permissionlessweb/ibc-proto-rs?branch=main)",
+ "ibc-proto",
  "ibc-types-core-client",
  "ibc-types-core-commitment",
  "ibc-types-core-connection",
  "ibc-types-domain-type",
  "ibc-types-identifier",
  "ibc-types-timestamp",
- "ics23 0.12.0 (git+https://github.com/permissionlessweb/ics23?branch=stable)",
+ "ics23",
  "num-traits",
  "primitive-types",
  "prost 0.14.3",
@@ -3579,9 +3550,9 @@ dependencies = [
  "serde_json",
  "sha2 0.10.9",
  "subtle-encoding",
- "tendermint 0.40.4 (git+https://github.com/permissionlessweb/tendermint-rs?branch=main)",
+ "tendermint",
  "tendermint-light-client-verifier",
- "tendermint-proto 0.40.4 (git+https://github.com/permissionlessweb/tendermint-rs?branch=main)",
+ "tendermint-proto",
  "time",
  "tracing",
  "uint",
@@ -3590,7 +3561,7 @@ dependencies = [
 [[package]]
 name = "ibc-types-path"
 version = "0.16.0"
-source = "git+https://github.com/permissionlessweb/ibc-types?branch=main#f51ebc33a752322992203f6236a277511059c7b3"
+source = "git+https://github.com/permissionlessweb/ibc-types?branch=zk-mvp#bddd4113d0b43477089e22db27ecd20b853171c2"
 dependencies = [
  "bytes",
  "derive_more",
@@ -3604,15 +3575,15 @@ dependencies = [
  "serde_derive",
  "serde_json",
  "subtle-encoding",
- "tendermint 0.40.4 (git+https://github.com/permissionlessweb/tendermint-rs?branch=main)",
- "tendermint-proto 0.40.4 (git+https://github.com/permissionlessweb/tendermint-rs?branch=main)",
+ "tendermint",
+ "tendermint-proto",
  "time",
 ]
 
 [[package]]
 name = "ibc-types-timestamp"
 version = "0.16.0"
-source = "git+https://github.com/permissionlessweb/ibc-types?branch=main#f51ebc33a752322992203f6236a277511059c7b3"
+source = "git+https://github.com/permissionlessweb/ibc-types?branch=zk-mvp#bddd4113d0b43477089e22db27ecd20b853171c2"
 dependencies = [
  "bytes",
  "displaydoc",
@@ -3622,15 +3593,15 @@ dependencies = [
  "serde_derive",
  "serde_json",
  "subtle-encoding",
- "tendermint 0.40.4 (git+https://github.com/permissionlessweb/tendermint-rs?branch=main)",
- "tendermint-proto 0.40.4 (git+https://github.com/permissionlessweb/tendermint-rs?branch=main)",
+ "tendermint",
+ "tendermint-proto",
  "time",
 ]
 
 [[package]]
 name = "ibc-types-transfer"
 version = "0.16.0"
-source = "git+https://github.com/permissionlessweb/ibc-types?branch=main#f51ebc33a752322992203f6236a277511059c7b3"
+source = "git+https://github.com/permissionlessweb/ibc-types?branch=zk-mvp#bddd4113d0b43477089e22db27ecd20b853171c2"
 dependencies = [
  "displaydoc",
  "serde",
@@ -3652,31 +3623,14 @@ dependencies = [
 [[package]]
 name = "ics23"
 version = "0.12.0"
+source = "git+https://github.com/permissionlessweb/ics23?branch=zk-mvp#383c266b855d0047c3235869a910a32908615237"
 dependencies = [
  "anyhow",
  "blake2",
  "blake3",
  "bytes",
  "hex",
- "informalsystems-pbjson 0.7.0",
- "prost 0.14.3",
- "ripemd",
- "serde",
- "sha2 0.10.9",
- "sha3",
-]
-
-[[package]]
-name = "ics23"
-version = "0.12.0"
-source = "git+https://github.com/permissionlessweb/ics23?branch=stable#310d48268948be7bf4e04e86c68af59ee0f92c69"
-dependencies = [
- "anyhow",
- "blake2",
- "blake3",
- "bytes",
- "hex",
- "informalsystems-pbjson 0.7.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "informalsystems-pbjson",
  "prost 0.14.3",
  "ripemd",
  "serde",
@@ -3922,25 +3876,7 @@ dependencies = [
 [[package]]
 name = "informalsystems-pbjson"
 version = "0.7.0"
-dependencies = [
- "base64 0.21.7",
- "serde",
-]
-
-[[package]]
-name = "informalsystems-pbjson"
-version = "0.7.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9aa4a0980c8379295100d70854354e78df2ee1c6ca0f96ffe89afeb3140e3a3d"
-dependencies = [
- "base64 0.21.7",
- "serde",
-]
-
-[[package]]
-name = "informalsystems-pbjson"
-version = "0.7.0"
-source = "git+https://github.com/permissionlessweb/pbjson?branch=main#df9ae64ffc106affccdfec2437365f8498ef306d"
+source = "git+https://github.com/permissionlessweb/pbjson?branch=zk-mvp#7a48b871416034c16941259823f4a40d534355a5"
 dependencies = [
  "base64 0.21.7",
  "serde",
@@ -3949,7 +3885,7 @@ dependencies = [
 [[package]]
 name = "informalsystems-pbjson-build"
 version = "0.7.0"
-source = "git+https://github.com/permissionlessweb/pbjson?branch=main#df9ae64ffc106affccdfec2437365f8498ef306d"
+source = "git+https://github.com/permissionlessweb/pbjson?branch=zk-mvp#7a48b871416034c16941259823f4a40d534355a5"
 dependencies = [
  "heck 0.4.1",
  "itertools 0.12.1",
@@ -3960,11 +3896,11 @@ dependencies = [
 [[package]]
 name = "informalsystems-pbjson-types"
 version = "0.7.0"
-source = "git+https://github.com/permissionlessweb/pbjson?branch=main#df9ae64ffc106affccdfec2437365f8498ef306d"
+source = "git+https://github.com/permissionlessweb/pbjson?branch=zk-mvp#7a48b871416034c16941259823f4a40d534355a5"
 dependencies = [
  "bytes",
  "chrono",
- "informalsystems-pbjson 0.7.0 (git+https://github.com/permissionlessweb/pbjson?branch=main)",
+ "informalsystems-pbjson",
  "informalsystems-pbjson-build",
  "prost 0.14.3",
  "prost-build",
@@ -4050,34 +3986,14 @@ checksum = "8f42a60cbdf9a97f5d2305f08a87dc4e09308d1276d28c869c684d7777685682"
 [[package]]
 name = "jmt"
 version = "0.12.0"
+source = "git+https://github.com/permissionlessweb/jmt?branch=zk-mvp#ac7a5c326d04d3f72cf6b3d9492d2518a7f4ad2d"
 dependencies = [
  "anyhow",
  "borsh",
  "digest 0.10.7",
  "hashbrown 0.13.2",
  "hex",
- "ics23 0.12.0",
- "itertools 0.10.5",
- "mirai-annotations",
- "num-derive",
- "num-traits",
- "serde",
- "sha2 0.10.9",
- "thiserror 1.0.69",
- "tracing",
-]
-
-[[package]]
-name = "jmt"
-version = "0.12.0"
-source = "git+https://github.com/permissionlessweb/jmt?branch=main#fc83eb8cdb350861ca67b4ab5f86ba5fd24910fd"
-dependencies = [
- "anyhow",
- "borsh",
- "digest 0.10.7",
- "hashbrown 0.13.2",
- "hex",
- "ics23 0.12.0 (git+https://github.com/permissionlessweb/ics23?branch=stable)",
+ "ics23",
  "itertools 0.10.5",
  "mirai-annotations",
  "num-derive",
@@ -5105,11 +5021,11 @@ dependencies = [
  "hex",
  "http-body 1.0.1",
  "humantime",
- "ibc-proto 0.52.0",
+ "ibc-proto",
  "ibc-types",
  "indicatif",
  "informalsystems-pbjson-types",
- "jmt 0.12.0",
+ "jmt",
  "ndarray",
  "once_cell",
  "penumbra-sdk-app",
@@ -5148,7 +5064,7 @@ dependencies = [
  "sha2 0.10.9",
  "simple-base64",
  "tempfile",
- "tendermint 0.40.4",
+ "tendermint",
  "termion",
  "time",
  "tokio",
@@ -5180,7 +5096,7 @@ dependencies = [
  "hex",
  "http 1.4.0",
  "http-body 1.0.1",
- "ibc-proto 0.52.0",
+ "ibc-proto",
  "ibc-types",
  "metrics",
  "parking_lot",
@@ -5204,7 +5120,7 @@ dependencies = [
  "serde_with",
  "sha2 0.10.9",
  "tempfile",
- "tendermint 0.40.4",
+ "tendermint",
  "tokio",
  "tokio-stream",
  "toml 0.7.8",
@@ -5245,11 +5161,11 @@ dependencies = [
  "futures",
  "hex",
  "http 1.4.0",
- "ibc-proto 0.52.0",
+ "ibc-proto",
  "ibc-types",
- "ics23 0.12.0",
+ "ics23",
  "informalsystems-pbjson-types",
- "jmt 0.12.0",
+ "jmt",
  "metrics",
  "metrics-exporter-prometheus",
  "metrics-process",
@@ -5298,10 +5214,10 @@ dependencies = [
  "sha2 0.10.9",
  "tar",
  "tempfile",
- "tendermint 0.40.4",
+ "tendermint",
  "tendermint-config",
  "tendermint-light-client-verifier",
- "tendermint-proto 0.40.4",
+ "tendermint-proto",
  "tendermint-rpc",
  "tokio",
  "tokio-stream",
@@ -5394,11 +5310,11 @@ dependencies = [
  "ed25519-consensus",
  "futures",
  "hex",
- "ibc-proto 0.52.0",
+ "ibc-proto",
  "ibc-types",
- "ics23 0.12.0",
+ "ics23",
  "im",
- "jmt 0.12.0",
+ "jmt",
  "metrics",
  "once_cell",
  "parking_lot",
@@ -5435,10 +5351,10 @@ dependencies = [
  "sha2 0.10.9",
  "tap",
  "tempfile",
- "tendermint 0.40.4",
+ "tendermint",
  "tendermint-config",
  "tendermint-light-client-verifier",
- "tendermint-proto 0.40.4",
+ "tendermint-proto",
  "tokio",
  "tokio-util",
  "tonic",
@@ -5477,11 +5393,11 @@ dependencies = [
  "ed25519-consensus",
  "futures",
  "hex",
- "ibc-proto 0.52.0",
+ "ibc-proto",
  "ibc-types",
- "ics23 0.12.0",
+ "ics23",
  "im",
- "jmt 0.12.0",
+ "jmt",
  "metrics",
  "once_cell",
  "parking_lot",
@@ -5525,10 +5441,10 @@ dependencies = [
  "sha2 0.10.9",
  "tap",
  "tempfile",
- "tendermint 0.40.4",
+ "tendermint",
  "tendermint-config",
  "tendermint-light-client-verifier",
- "tendermint-proto 0.40.4",
+ "tendermint-proto",
  "tokio",
  "tokio-util",
  "tonic",
@@ -5633,7 +5549,7 @@ dependencies = [
  "serde_with",
  "sha2 0.10.9",
  "tap",
- "tendermint 0.40.4",
+ "tendermint",
  "tokio",
  "tonic",
  "tracing",
@@ -5723,7 +5639,7 @@ dependencies = [
  "prost 0.14.3",
  "serde",
  "sha2 0.10.9",
- "tendermint 0.40.4",
+ "tendermint",
  "tendermint-light-client-verifier",
  "tokio",
  "tonic",
@@ -5758,7 +5674,7 @@ dependencies = [
  "rand 0.8.5",
  "rand_core 0.6.4",
  "serde",
- "tendermint 0.40.4",
+ "tendermint",
  "tokio",
  "tokio-stream",
  "tonic",
@@ -5871,7 +5787,7 @@ dependencies = [
  "serde_json",
  "sha2 0.10.9",
  "tap",
- "tendermint 0.40.4",
+ "tendermint",
  "tendermint-light-client-verifier",
  "thiserror 1.0.69",
  "tokio",
@@ -5895,7 +5811,7 @@ dependencies = [
  "penumbra-sdk-proto",
  "penumbra-sdk-sct",
  "serde",
- "tendermint 0.40.4",
+ "tendermint",
  "tonic",
  "tracing",
 ]
@@ -5940,7 +5856,7 @@ dependencies = [
  "rand 0.8.5",
  "rand_core 0.6.4",
  "serde",
- "tendermint 0.40.4",
+ "tendermint",
  "tonic",
  "tracing",
 ]
@@ -5976,7 +5892,7 @@ dependencies = [
  "proptest",
  "rand 0.8.5",
  "serde",
- "tendermint 0.40.4",
+ "tendermint",
  "tonic",
  "tracing",
 ]
@@ -6028,7 +5944,7 @@ dependencies = [
  "serde",
  "serde_json",
  "tap",
- "tendermint 0.40.4",
+ "tendermint",
  "thiserror 1.0.69",
  "tokio",
  "tonic",
@@ -6047,9 +5963,9 @@ dependencies = [
  "cnidarium",
  "futures",
  "hex",
- "ibc-proto 0.52.0",
+ "ibc-proto",
  "ibc-types",
- "ics23 0.12.0",
+ "ics23",
  "informalsystems-pbjson-types",
  "metrics",
  "num-traits",
@@ -6064,7 +5980,7 @@ dependencies = [
  "serde",
  "serde_json",
  "sha2 0.10.9",
- "tendermint 0.40.4",
+ "tendermint",
  "tendermint-light-client-verifier",
  "time",
  "tokio",
@@ -6173,8 +6089,8 @@ dependencies = [
  "serde_json",
  "sha2 0.10.9",
  "tap",
- "tendermint 0.40.4",
- "tendermint-proto 0.40.4",
+ "tendermint",
+ "tendermint-proto",
  "tower 0.4.13",
  "tracing",
 ]
@@ -6188,8 +6104,8 @@ dependencies = [
  "penumbra-sdk-mock-consensus",
  "penumbra-sdk-proto",
  "tap",
- "tendermint 0.40.4",
- "tendermint-proto 0.40.4",
+ "tendermint",
+ "tendermint-proto",
  "tonic",
  "tracing",
 ]
@@ -6319,18 +6235,18 @@ dependencies = [
  "hex",
  "http-body 1.0.1",
  "http-body-util",
- "ibc-proto 0.52.0",
+ "ibc-proto",
  "ibc-types",
- "ics23 0.12.0",
- "informalsystems-pbjson 0.7.0",
+ "ics23",
+ "informalsystems-pbjson",
  "informalsystems-pbjson-types",
  "pin-project",
  "prost 0.14.3",
  "serde",
  "serde_json",
  "subtle-encoding",
- "tendermint 0.40.4",
- "tendermint-proto 0.40.4",
+ "tendermint",
+ "tendermint-proto",
  "tendermint-rpc",
  "thiserror 1.0.69",
  "tonic",
@@ -6371,7 +6287,7 @@ dependencies = [
  "rand 0.8.5",
  "rand_core 0.6.4",
  "serde",
- "tendermint 0.40.4",
+ "tendermint",
  "tonic",
  "tracing",
 ]
@@ -6401,7 +6317,7 @@ dependencies = [
  "decaf377-rdsa",
  "futures",
  "hex",
- "ibc-proto 0.52.0",
+ "ibc-proto",
  "ibc-types",
  "im",
  "metrics",
@@ -6424,7 +6340,7 @@ dependencies = [
  "serde",
  "serde_json",
  "tap",
- "tendermint 0.40.4",
+ "tendermint",
  "thiserror 1.0.69",
  "tonic",
  "tracing",
@@ -6476,7 +6392,7 @@ dependencies = [
  "serde_with",
  "sha2 0.10.9",
  "tap",
- "tendermint 0.40.4",
+ "tendermint",
  "tokio",
  "tonic",
  "tracing",
@@ -6575,10 +6491,10 @@ dependencies = [
  "pin-project-lite",
  "sha2 0.10.9",
  "tap",
- "tendermint 0.40.4",
+ "tendermint",
  "tendermint-config",
  "tendermint-light-client-verifier",
- "tendermint-proto 0.40.4",
+ "tendermint-proto",
  "tendermint-rpc",
  "tokio",
  "tokio-stream",
@@ -6608,8 +6524,8 @@ dependencies = [
  "pin-project",
  "pin-project-lite",
  "sha2 0.10.9",
- "tendermint 0.40.4",
- "tendermint-proto 0.40.4",
+ "tendermint",
+ "tendermint-proto",
  "tokio",
  "tokio-stream",
  "tokio-util",
@@ -6638,7 +6554,7 @@ dependencies = [
  "derivative",
  "ed25519-consensus",
  "hex",
- "ibc-proto 0.52.0",
+ "ibc-proto",
  "ibc-types",
  "informalsystems-pbjson-types",
  "num-bigint",
@@ -6669,7 +6585,7 @@ dependencies = [
  "serde",
  "serde_json",
  "sha2 0.10.9",
- "tendermint 0.40.4",
+ "tendermint",
  "thiserror 1.0.69",
  "tokio",
  "tracing",
@@ -6738,7 +6654,7 @@ dependencies = [
  "serde_json",
  "sha2 0.10.9",
  "tap",
- "tendermint 0.40.4",
+ "tendermint",
  "tokio",
  "tokio-stream",
  "tonic",
@@ -9178,6 +9094,7 @@ dependencies = [
 [[package]]
 name = "tendermint"
 version = "0.40.4"
+source = "git+https://github.com/permissionlessweb/tendermint-rs?branch=zk-mvp#2d1e8ff25ec07e4badb732818c0bd7ff8526b511"
 dependencies = [
  "bytes",
  "digest 0.10.7",
@@ -9196,34 +9113,7 @@ dependencies = [
  "signature",
  "subtle",
  "subtle-encoding",
- "tendermint-proto 0.40.4",
- "time",
- "zeroize",
-]
-
-[[package]]
-name = "tendermint"
-version = "0.40.4"
-source = "git+https://github.com/permissionlessweb/tendermint-rs?branch=main#84af40465b4b393d66f0761d90b2863ff0f7191a"
-dependencies = [
- "bytes",
- "digest 0.10.7",
- "ed25519",
- "ed25519-consensus",
- "flex-error",
- "futures",
- "num-traits",
- "once_cell",
- "prost 0.14.3",
- "serde",
- "serde_bytes",
- "serde_json",
- "serde_repr",
- "sha2 0.10.9",
- "signature",
- "subtle",
- "subtle-encoding",
- "tendermint-proto 0.40.4 (git+https://github.com/permissionlessweb/tendermint-rs?branch=main)",
+ "tendermint-proto",
  "time",
  "zeroize",
 ]
@@ -9231,11 +9121,12 @@ dependencies = [
 [[package]]
 name = "tendermint-config"
 version = "0.40.4"
+source = "git+https://github.com/permissionlessweb/tendermint-rs?branch=zk-mvp#2d1e8ff25ec07e4badb732818c0bd7ff8526b511"
 dependencies = [
  "flex-error",
  "serde",
  "serde_json",
- "tendermint 0.40.4",
+ "tendermint",
  "toml 0.8.23",
  "url",
 ]
@@ -9243,32 +9134,19 @@ dependencies = [
 [[package]]
 name = "tendermint-light-client-verifier"
 version = "0.40.4"
-source = "git+https://github.com/permissionlessweb/tendermint-rs?branch=main#84af40465b4b393d66f0761d90b2863ff0f7191a"
+source = "git+https://github.com/permissionlessweb/tendermint-rs?branch=zk-mvp#2d1e8ff25ec07e4badb732818c0bd7ff8526b511"
 dependencies = [
  "derive_more",
  "flex-error",
  "serde",
- "tendermint 0.40.4 (git+https://github.com/permissionlessweb/tendermint-rs?branch=main)",
+ "tendermint",
  "time",
 ]
 
 [[package]]
 name = "tendermint-proto"
 version = "0.40.4"
-dependencies = [
- "bytes",
- "flex-error",
- "prost 0.14.3",
- "serde",
- "serde_bytes",
- "subtle-encoding",
- "time",
-]
-
-[[package]]
-name = "tendermint-proto"
-version = "0.40.4"
-source = "git+https://github.com/permissionlessweb/tendermint-rs?branch=main#84af40465b4b393d66f0761d90b2863ff0f7191a"
+source = "git+https://github.com/permissionlessweb/tendermint-rs?branch=zk-mvp#2d1e8ff25ec07e4badb732818c0bd7ff8526b511"
 dependencies = [
  "bytes",
  "flex-error",
@@ -9282,6 +9160,7 @@ dependencies = [
 [[package]]
 name = "tendermint-rpc"
 version = "0.40.4"
+source = "git+https://github.com/permissionlessweb/tendermint-rs?branch=zk-mvp#2d1e8ff25ec07e4badb732818c0bd7ff8526b511"
 dependencies = [
  "async-trait",
  "bytes",
@@ -9298,9 +9177,9 @@ dependencies = [
  "serde_json",
  "subtle",
  "subtle-encoding",
- "tendermint 0.40.4",
+ "tendermint",
  "tendermint-config",
- "tendermint-proto 0.40.4",
+ "tendermint-proto",
  "thiserror 1.0.69",
  "time",
  "tokio",
@@ -9460,9 +9339,9 @@ checksum = "1f3ccbac311fea05f86f61904b462b55fb3df8837a366dfc601a0161d0532f20"
 
 [[package]]
 name = "tokio"
-version = "1.51.0"
+version = "1.51.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2bd1c4c0fc4a7ab90fc15ef6daaa3ec3b893f004f915f2392557ed23237820cd"
+checksum = "f66bf9585cda4b724d3e78ab34b73fb2bbaba9011b9bfdf69dc836382ea13b8c"
 dependencies = [
  "bytes",
  "libc",
@@ -9769,13 +9648,14 @@ dependencies = [
 [[package]]
 name = "tower-abci"
 version = "0.19.1"
+source = "git+https://github.com/permissionlessweb/tower-abci?branch=zk-mvp#cf17695282ea2c9ad5c0dd8bc87e1b13787fc84f"
 dependencies = [
  "bytes",
  "futures",
  "pin-project",
  "prost 0.14.3",
- "tendermint 0.40.4",
- "tendermint-proto 0.40.4",
+ "tendermint",
+ "tendermint-proto",
  "tokio",
  "tokio-stream",
  "tokio-util",
